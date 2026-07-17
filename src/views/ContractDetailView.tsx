@@ -285,22 +285,6 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
             </button>
           </div>
 
-          <div className="hidden lg:flex flex-col items-end mr-4">
-            <span className="text-[10px] font-black text-white/20 uppercase tracking-widest leading-none mb-1">LYA UNIT VALUE</span>
-            <span className="text-xl font-black font-headline text-emerald-400 leading-none">{formatPrice(contract.unitValue)}</span>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <button 
-              disabled
-              className="px-6 py-3 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400/50 rounded-xl font-black text-[10px] uppercase tracking-widest cursor-not-allowed"
-              title={t('Available soon', 'Disponible prochainement')}
-            >
-              {t('ACQUISITION — COMING SOON', 'ACQUISITION — BIENTÔT DISPONIBLE')}
-            </button>
-            <p className="text-[9px] text-white/20 text-center font-black uppercase tracking-widest">
-              {t('Beta phase — Payments opening soon', 'Phase bêta — Paiements disponibles prochainement')}
-            </p>
-          </div>
           <button 
             onClick={(e) => onToggleWatchlist?.(e, contract.id)}
             className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all ${isWatchlisted ? 'bg-accent-gold border-accent-gold text-surface-dim' : 'bg-white/5 border-white/10'}`}
@@ -507,16 +491,16 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                       </div>
                     </div>
 
-                     {/* Primary LYA UNIT Dynamic Timeline */}
+                     {/* Primary Milestone Timeline */}
                      <div className="space-y-6 bg-primary-cyan/5 border border-primary-cyan/20 p-8 rounded-[2.5rem] relative overflow-hidden">
                        <div className="absolute -right-24 -bottom-24 w-64 h-64 bg-primary-cyan/5 rounded-full blur-[80px]" />
                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-4">
                          <div className="space-y-1">
                            <span className="text-[10px] font-mono font-black text-primary-cyan uppercase tracking-[0.3em]">
-                             {t('TIMELINE DE VALORISATION LYA UNIT', 'TIMELINE DE VALORISATION LYA UNIT')}
+                             {t('LYA SCORE TIMELINE', 'CALENDRIER DU SCORE LYA')}
                            </span>
                            <h3 className="text-xl sm:text-2xl font-black font-headline text-white uppercase tracking-tight">
-                             {t('DYNAMIC OPERATION QUALITY TIMELINE', 'CALENDRIER D\'EXÉCUTION & CONCEPTE LYA UNIT')}
+                             {t('CERTIFICATION MILESTONE TIMELINE', 'CALENDRIER DE CERTIFICATION DES JALONS')}
                            </h3>
                          </div>
                          <div className="px-4 py-2 bg-black/40 border border-white/5 rounded-full text-[10px] text-white/60 font-black tracking-widest uppercase">
@@ -525,7 +509,7 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                        </div>
 
                        <p className="text-xs text-white/70 leading-relaxed max-w-4xl text-justify">
-                         {t('The baseline LYA UNIT pricing starts at the base LYA UNIT value, representing the initial fractioned value. The price then fluctuates dynamically up (Jalon +) or down (Jalon -) exclusively based on the operational quality. Real-time contrat numérique certifiés automatically adjust indices de référence the second a milestone is certified or missed.', 'Le cours du LYA UNIT (valeur initiale de $50,00) varie de façon autonome en fonction de la validation ou du retard des jalons opérationnels. C\'est l\'indicateur exclusif de la qualité de notre fonctionnement : l\'atteinte des jalons (Jalon +) revalorise l\'index, tandis que les retards de livraison (Jalon -) l\'ajustent à la baisse.')}
+                         {t('The certified LYA Score evolves based strictly on operational quality: validated milestones (Jalon +) raise the score, while delays or setbacks (Jalon -) lower it. The score is certified by professional audit each time a milestone is confirmed or missed — it reflects real, verified progress, not a market price.', 'Le Score LYA certifié évolue strictement en fonction de la qualité opérationnelle : les jalons validés (Jalon +) font progresser le score, tandis que les retards ou contre-performances (Jalon -) le font reculer. Le score est certifié par audit professionnel à chaque confirmation ou échec de jalon — il reflète une progression réelle et vérifiée, pas un prix de marché.')}
                        </p>
 
                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
@@ -580,14 +564,14 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                       <div className="flex items-center gap-3">
                         <Scale className="text-accent-gold" size={20} />
                         <h4 className="text-[12px] font-black text-white/40 uppercase tracking-[0.3em]">
-                          {t('COMPLETE REGULATORY & SECURITIZATION SHEET', 'FICHE JURIDIQUE & TECHNIQUE INTÉGRALE')}
+                          {t('COMPLETE CERTIFICATION & VALUATION SHEET', 'FICHE COMPLÈTE DE CERTIFICATION & VALORISATION')}
                         </h4>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {/* Financial metrics */}
                         <div className="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] space-y-6 hover:border-white/10 transition-all">
-                          <div className="text-[10px] font-black uppercase tracking-wider text-primary-cyan">{t('FINANCIAL SPECS', 'SPÉCIFICATIONS FINANCIÈRES')}</div>
+                          <div className="text-[10px] font-black uppercase tracking-wider text-primary-cyan">{t('VALUATION SPECS', 'SPÉCIFICATIONS DE VALORISATION')}</div>
                           
                           <div className="space-y-4">
                             <div>
@@ -595,16 +579,12 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                               <div className="text-xl font-headline font-black text-white leading-none">{formatPrice(contract.totalValue)}</div>
                             </div>
                             <div>
-                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('CIRCULATING LYA UNITS', 'UNITÉS LYA EN CIRCULATION')}</div>
-                              <div className="text-sm font-semibold text-white/90">{contract.totalUnits?.toLocaleString()} {t('Units', 'Unités')}</div>
+                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('LYA SCORE', 'SCORE LYA')}</div>
+                              <div className="text-sm font-semibold text-white/90">{contract.totalScore || 750}/1000</div>
                             </div>
                             <div>
-                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('UNIT ACQUISITION VALUE', "VALEUR D'ACQUISITION DE L'UNITÉ")}</div>
+                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('REFERENCE VALUATION', "VALORISATION DE RÉFÉRENCE")}</div>
                               <div className="text-sm font-semibold text-emerald-400">{formatPrice(contract.unitValue)}</div>
-                            </div>
-                            <div>
-                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('UNITS AVAILABLE FOR HOT SWAP', "UNITÉS DISPOS À L'ÉCHANGE")}</div>
-                              <div className="text-sm font-semibold text-white/90">{contract.availableUnits ? contract.availableUnits.toLocaleString() + ' Unités' : '345 Unités'}</div>
                             </div>
                           </div>
                         </div>
@@ -629,7 +609,7 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                               <div className="text-sm font-semibold text-white/90">{contract.jurisdiction || 'EU (MiCA Compliant)'}</div>
                             </div>
                             <div>
-                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('ASSET MATURITY DATE', 'ÉCHÉANCE ET LIQUIDATION')}</div>
+                              <div className="text-[11px] font-black text-white/30 uppercase tracking-widest mb-1">{t('CONTRACT TERM END DATE', "ÉCHÉANCE DU CONTRAT")}</div>
                               <div className="text-sm font-semibold text-rose-400/90">{contract.maturityDate || '31 Dec 2029'}</div>
                             </div>
                           </div>

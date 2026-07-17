@@ -403,7 +403,7 @@ export function generateCertificate(contract: Contract, lang: string) {
           <div class="kpi-value kpi-violet">${contract.totalScore}<span style="font-size:8px;color:rgba(167,139,250,0.4)">/1000</span></div>
         </div>
         <div class="kpi-item">
-          <div class="kpi-label">LYA UNIT</div>
+          <div class="kpi-label">VALORISATION</div>
           <div class="kpi-value kpi-gold">$${lyaUnit}</div>
         </div>
         <div class="kpi-item">
@@ -461,7 +461,7 @@ export function generateCertificate(contract: Contract, lang: string) {
         </div>
         <div>
           <div class="data-card-dark" style="margin-bottom:3mm">
-            <div class="data-label" style="color:rgba(255,255,255,0.3)">LYA UNIT</div>
+            <div class="data-label" style="color:rgba(255,255,255,0.3)">VALORISATION</div>
             <div class="data-value-gold">$${lyaUnit}</div>
             <div class="data-sub" style="color:rgba(255,255,255,0.3)">${isFR ? 'Base' : 'Base'} $${LYA_UNIT_VALUE} · ${contract.growth >= 0 ? '+' : ''}${contract.growth}% ${isFR ? 'variation' : 'growth'}</div>
           </div>
@@ -479,7 +479,7 @@ export function generateCertificate(contract: Contract, lang: string) {
       <div class="section-title"><span>03</span> ${isFR ? 'DONNÉES ÉCONOMIQUES' : 'ECONOMIC DATA'}</div>
       <div class="grid-4">
         <div class="data-card">
-          <div class="data-label">${isFR ? 'Total Unités LYA' : 'Total LYA Units'}</div>
+          <div class="data-label">${isFR ? 'Valorisation Totale' : 'Total Valuation'}</div>
           <div class="data-value">${(contract.totalUnits || 10000).toLocaleString()}</div>
         </div>
         <div class="data-card">
@@ -524,20 +524,20 @@ export function generateLegalTerms(contract: Contract, lang: string) {
   const isFR = lang === 'FR';
 
   const articles = isFR ? [
-    ['ART. 1 — DÉFINITIONS', `Dans le présent acte, "LYA Unit" désigne une unité contractuelle de valorisation créative émise par LinkYourArt sur le Registre Officiel LYA. "Détenteur" désigne toute personne physique ou morale ayant acquis des LYA Units dans le cadre du présent contrat. "Créateur" désigne l'émetteur du projet créatif référencé sous l'index ${contract.registryIndex}.`],
-    ['ART. 2 — OBJET DU CONTRAT', `Le présent contrat a pour objet d'établir les droits et obligations entre LinkYourArt, le Créateur et les Détenteurs de LYA Units relatifs au projet "${contract.name}". Chaque LYA Unit représente une participation contractuelle directe aux revenus générés par l'œuvre, dans la limite du taux de partage défini à ${contract.revenueSharePercentage}%.`],
-    ['ART. 3 — DROITS DES DÉTENTEURS', `Les Détenteurs bénéficient d'un droit de participation aux revenus nets de l'œuvre proportionnel à leur nombre de LYA Units détenues. Ce droit est incessible sans accord préalable de LinkYourArt. Les Détenteurs ne bénéficient d'aucun droit de décision sur les choix artistiques du Créateur.`],
+    ['ART. 1 — DÉFINITIONS', `Dans le présent acte, "Participation" désigne le droit contractuel de participation aux revenus, non négociable et non cessible sans accord, accordé par LinkYourArt au titre du présent contrat. "Mécène" désigne toute personne physique ou morale ayant souscrit une Participation dans le cadre du présent contrat. "Créateur" désigne l'émetteur du projet créatif référencé sous l'index ${contract.registryIndex}.`],
+    ['ART. 2 — OBJET DU CONTRAT', `Le présent contrat a pour objet d'établir les droits et obligations entre LinkYourArt, le Créateur et les Mécènes relatifs au projet "${contract.name}". La Participation représente un droit contractuel direct aux revenus générés par l'œuvre, dans la limite du taux de partage défini à ${contract.revenueSharePercentage}%. Ce droit ne constitue ni un titre financier, ni un instrument négociable.`],
+    ['ART. 3 — DROITS DES MÉCÈNES', `Les Mécènes bénéficient d'un droit de participation aux revenus nets de l'œuvre proportionnel à leur Participation. Ce droit est incessible et non négociable sans accord préalable écrit de LinkYourArt. Les Mécènes ne bénéficient d'aucun droit de décision sur les choix artistiques du Créateur.`],
     ['ART. 4 — OBLIGATIONS DU CRÉATEUR', `Le Créateur s'engage à fournir à LinkYourArt toutes les informations relatives aux revenus générés par l'œuvre dans un délai de 30 jours suivant leur encaissement. Le Créateur garantit être titulaire de l'ensemble des droits de propriété intellectuelle relatifs à l'œuvre.`],
-    ['ART. 5 — LYA SCORE & VALORISATION', `Le LYA Score, actuellement établi à ${contract.totalScore}/1000, est calculé par LinkYourArt selon une méthodologie propriétaire combinant évaluation algorithmique et validation par des professionnels certifiés. Ce score influe sur la valeur de la LYA Unit ($${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)} à date) mais ne constitue pas une garantie de rendement.`],
-    ['ART. 6 — DURÉE ET RÉSILIATION', `Le présent contrat est conclu pour une durée indéterminée à compter de sa date d'émission. Il peut être résilié par LinkYourArt en cas de manquement grave du Créateur ou de décision de la gouvernance LYA. La résiliation entraîne le remboursement des Détenteurs selon la valeur LYA Unit en vigueur à la date de résiliation.`],
+    ['ART. 5 — LYA SCORE & VALORISATION', `Le LYA Score, actuellement établi à ${contract.totalScore}/1000, est calculé par LinkYourArt selon une méthodologie propriétaire combinant évaluation algorithmique et validation par des professionnels certifiés. Ce score influe sur la valorisation de référence du projet ($${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)} à date) mais ne constitue ni une garantie de rendement, ni un prix de marché.`],
+    ['ART. 6 — DURÉE ET RÉSILIATION', `Le présent contrat est conclu pour une durée indéterminée à compter de sa date d'émission. Il peut être résilié par LinkYourArt en cas de manquement grave du Créateur. La résiliation entraîne le remboursement des Mécènes selon la valorisation de référence en vigueur à la date de résiliation.`],
     ['ART. 7 — DROIT APPLICABLE', `Le présent contrat est soumis au droit français. Tout litige relatif à son interprétation ou son exécution sera soumis à la compétence exclusive des tribunaux de Paris.`],
   ] : [
-    ['ART. 1 — DEFINITIONS', `In this agreement, "LYA Unit" means a contractual creative valuation unit issued by LinkYourArt on the Official LYA Registry. "Holder" means any natural or legal person who has acquired LYA Units under this contract. "Creator" means the issuer of the creative project referenced under index ${contract.registryIndex}.`],
-    ['ART. 2 — PURPOSE', `This contract establishes the rights and obligations between LinkYourArt, the Creator and LYA Unit Holders relating to the project "${contract.name}". Each LYA Unit represents a direct contractual participation in the revenues generated by the work, up to the sharing rate defined at ${contract.revenueSharePercentage}%.`],
-    ['ART. 3 — HOLDERS RIGHTS', `Holders benefit from a right to participate in the net revenues of the work proportional to their number of LYA Units held. This right is non-transferable without prior agreement from LinkYourArt. Holders have no decision-making rights over the Creator's artistic choices.`],
+    ['ART. 1 — DEFINITIONS', `In this agreement, "Participation" means the contractual, non-negotiable and non-transferable revenue participation right granted by LinkYourArt under this contract. "Patron" means any natural or legal person who has subscribed to a Participation under this contract. "Creator" means the issuer of the creative project referenced under index ${contract.registryIndex}.`],
+    ['ART. 2 — PURPOSE', `This contract establishes the rights and obligations between LinkYourArt, the Creator and Patrons relating to the project "${contract.name}". The Participation represents a direct contractual right to the revenues generated by the work, up to the sharing rate defined at ${contract.revenueSharePercentage}%. This right constitutes neither a financial security nor a negotiable instrument.`],
+    ['ART. 3 — PATRON RIGHTS', `Patrons benefit from a right to participate in the net revenues of the work proportional to their Participation. This right is non-transferable and non-negotiable without prior written agreement from LinkYourArt. Patrons have no decision-making rights over the Creator's artistic choices.`],
     ['ART. 4 — CREATOR OBLIGATIONS', `The Creator agrees to provide LinkYourArt with all information relating to revenues generated by the work within 30 days of their receipt. The Creator warrants ownership of all intellectual property rights relating to the work.`],
-    ['ART. 5 — LYA SCORE & VALUATION', `The LYA Score, currently set at ${contract.totalScore}/1000, is calculated by LinkYourArt according to a proprietary methodology combining algorithmic evaluation and validation by certified professionals. This score influences the LYA Unit value ($${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)} at date) but does not constitute a return guarantee.`],
-    ['ART. 6 — TERM AND TERMINATION', `This contract is concluded for an indefinite term from its date of issue. It may be terminated by LinkYourArt in case of serious breach by the Creator or decision of LYA governance. Termination results in reimbursement of Holders according to the LYA Unit value prevailing at the date of termination.`],
+    ['ART. 5 — LYA SCORE & VALUATION', `The LYA Score, currently set at ${contract.totalScore}/1000, is calculated by LinkYourArt according to a proprietary methodology combining algorithmic evaluation and validation by certified professionals. This score influences the project's reference valuation ($${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)} at date) but does not constitute a return guarantee or a market price.`],
+    ['ART. 6 — TERM AND TERMINATION', `This contract is concluded for an indefinite term from its date of issue. It may be terminated by LinkYourArt in case of serious breach by the Creator. Termination results in reimbursement of Patrons according to the reference valuation prevailing at the date of termination.`],
     ['ART. 7 — GOVERNING LAW', `This contract is governed by French law. Any dispute relating to its interpretation or performance shall be submitted to the exclusive jurisdiction of the Paris courts.`],
   ];
 
@@ -560,14 +560,14 @@ export function generateLegalTerms(contract: Contract, lang: string) {
           <div class="kpi-value kpi-violet">${contract.totalScore}/1000</div>
         </div>
         <div class="kpi-item">
-          <div class="kpi-label">LYA Unit</div>
+          <div class="kpi-label">Valorisation</div>
           <div class="kpi-value kpi-gold">$${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)}</div>
         </div>
       </div>
     </div>
 
     <div class="highlight-box">
-      <p><strong>${isFR ? 'Document officiel LinkYourArt' : 'Official LinkYourArt document'}</strong> — ${isFR ? 'Ce document constitue les conditions contractuelles légales régissant les LYA Units émises dans le cadre du projet créatif référencé ci-dessus. Il est émis par LinkYourArt, marque de LINKYOURART SASU, et conservé dans le Registre Officiel LYA.' : 'This document constitutes the legal contractual conditions governing the LYA Units issued in connection with the above-referenced creative project. It is issued by LinkYourArt, marque de LINKYOURART SASU, and maintained in the Official LYA Registry.'}</p>
+      <p><strong>${isFR ? 'Document officiel LinkYourArt' : 'Official LinkYourArt document'}</strong> — ${isFR ? 'Ce document constitue les conditions contractuelles légales régissant la Participation accordée dans le cadre du projet créatif référencé ci-dessus. Il est émis par LinkYourArt, marque de LINKYOURART SASU, et conservé dans le Registre Officiel LYA.' : 'This document constitutes the legal contractual conditions governing the Participation granted in connection with the above-referenced creative project. It is issued by LinkYourArt, marque de LINKYOURART SASU, and maintained in the Official LYA Registry.'}</p>
     </div>
 
     <div class="legal-text">
@@ -603,21 +603,19 @@ export function generatePermissions(contract: Contract, lang: string) {
   const isFR = lang === 'FR';
 
   const permissions = isFR ? [
-    { granted: true, title: 'Participation aux revenus', desc: `Droit de percevoir ${contract.revenueSharePercentage}% des revenus nets de l'œuvre proportionnellement aux LYA Units détenues.` },
-    { granted: true, title: 'Échange de LYA Units', desc: 'Possibilité d\'échanger vos LYA Units sur le Marché Créatif LYA selon les conditions du registre en vigueur.' },
-    { granted: true, title: 'Accès aux rapports', desc: 'Consultation des rapports mensuels de performance, des jalons du projet et des données de valorisation.' },
-    { granted: true, title: 'Vote de gouvernance', desc: 'Participation aux décisions de gouvernance LYA proportionnellement au nombre de LYA Units détenues.' },
-    { granted: false, title: 'Modification de l\'œuvre', desc: 'Les détenteurs de LYA Units ne disposent d\'aucun droit de modification ou de direction artistique sur l\'œuvre.' },
+    { granted: true, title: 'Participation aux revenus', desc: `Droit de percevoir ${contract.revenueSharePercentage}% des revenus nets de l'œuvre proportionnellement à sa participation contractuelle.` },
+    { granted: true, title: 'Accès aux rapports', desc: 'Consultation des rapports mensuels de performance, des jalons du projet et des données de certification.' },
+    { granted: true, title: 'Suivi de certification', desc: 'Accès en temps réel au Score LYA et au statut de certification du projet soutenu.' },
+    { granted: false, title: 'Modification de l\'œuvre', desc: 'Les mécènes ne disposent d\'aucun droit de modification ou de direction artistique sur l\'œuvre.' },
     { granted: false, title: 'Utilisation commerciale directe', desc: 'L\'utilisation directe de l\'œuvre à des fins commerciales sans accord préalable de LinkYourArt et du Créateur est interdite.' },
-    { granted: false, title: 'Cession sans accord', desc: 'La cession de LYA Units en dehors du Marché Officiel LYA sans autorisation préalable est interdite.' },
+    { granted: false, title: 'Cession ou revente', desc: 'La participation contractuelle n\'est ni négociable ni cessible à un tiers sans accord écrit préalable de LinkYourArt.' },
   ] : [
-    { granted: true, title: 'Revenue participation', desc: `Right to receive ${contract.revenueSharePercentage}% of the work's net revenues proportional to LYA Units held.` },
-    { granted: true, title: 'LYA Unit exchange', desc: 'Ability to exchange your LYA Units on the LYA Creative Market under the current registry conditions.' },
-    { granted: true, title: 'Report access', desc: 'Access to monthly performance reports, project milestones and valuation data.' },
-    { granted: true, title: 'Governance vote', desc: 'Participation in LYA governance decisions proportional to the number of LYA Units held.' },
-    { granted: false, title: 'Work modification', desc: 'LYA Unit holders have no right to modify or artistically direct the work.' },
+    { granted: true, title: 'Revenue participation', desc: `Right to receive ${contract.revenueSharePercentage}% of the work's net revenues proportional to their contractual participation.` },
+    { granted: true, title: 'Report access', desc: 'Access to monthly performance reports, project milestones and certification data.' },
+    { granted: true, title: 'Certification tracking', desc: 'Real-time access to the LYA Score and certification status of the supported project.' },
+    { granted: false, title: 'Work modification', desc: 'Patrons have no right to modify or artistically direct the work.' },
     { granted: false, title: 'Direct commercial use', desc: 'Direct use of the work for commercial purposes without prior agreement from LinkYourArt and the Creator is prohibited.' },
-    { granted: false, title: 'Transfer without agreement', desc: 'Transfer of LYA Units outside the Official LYA Market without prior authorization is prohibited.' },
+    { granted: false, title: 'Transfer or resale', desc: 'The contractual participation is neither negotiable nor transferable to a third party without prior written agreement from LinkYourArt.' },
   ];
 
   const html = `
@@ -631,7 +629,7 @@ export function generatePermissions(contract: Contract, lang: string) {
     <div class="hero-band" style="padding:4mm 6mm">
       <div class="hero-info">
         <div class="hero-name" style="font-size:13px">${contract.name}</div>
-        <div class="hero-category">${contract.registryIndex} · ${isFR ? 'Permissions applicables aux détenteurs de LYA Units' : 'Permissions applicable to LYA Unit holders'}</div>
+        <div class="hero-category">${contract.registryIndex} · ${isFR ? 'Permissions applicables aux Mécènes' : 'Permissions applicable to Patrons'}</div>
       </div>
     </div>
 
@@ -675,7 +673,7 @@ export function generatePermissions(contract: Contract, lang: string) {
         <div class="data-value" style="color:#10b981">${contract.revenueSharePercentage}%</div>
       </div>
       <div class="data-card" style="text-align:center">
-        <div class="data-label">LYA Unit</div>
+        <div class="data-label">Valorisation</div>
         <div class="data-value" style="color:#f5c842">$${(LYA_UNIT_VALUE * (1 + contract.growth / 100)).toFixed(2)}</div>
       </div>
     </div>

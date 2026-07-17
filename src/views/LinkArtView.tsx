@@ -825,7 +825,7 @@ export const LinkArtView: React.FC<{
                 <div className="space-y-6">
                   <div className="space-y-2">
                     <div className="flex justify-between items-end">
-                      <label className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">{t('Total Units (Fractionalization)', 'Unités Totales (Fractionnalisation)')}</label>
+                      <label className="text-xs uppercase tracking-widest text-on-surface-variant font-bold">{t('Valuation Reference Base', 'Base de Référence de Valorisation')}</label>
                       <span className="text-xs text-primary-cyan font-bold uppercase tracking-widest font-mono">= {totalLyaUnits} LYA (@ {lyaUnits} LYA/{t('Unit', 'Unité')})</span>
                     </div>
                     <input 
@@ -910,17 +910,17 @@ export const LinkArtView: React.FC<{
                   <div className="p-6 bg-primary-cyan/5 border border-primary-cyan/20 space-y-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Info size={14} className="text-primary-cyan" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-primary-cyan">{t('LYA Standard Unit', 'Unité Standard LYA')}</span>
+                      <span className="text-xs font-bold uppercase tracking-widest text-primary-cyan">{t('LYA Valuation Standard', 'Standard de Valorisation LYA')}</span>
                     </div>
                     <p className="text-xs text-on-surface-variant leading-relaxed uppercase tracking-wider">
                       {t(
-                        '1 LYA Unit is fixed at ',
-                        '1 Unité LYA est fixée à '
+                        'The LYA reference valuation standard is fixed at ',
+                        'Le standard de valorisation de référence LYA est fixé à '
                       )}
                       <span className="text-on-surface font-bold text-sm">{formatLYA()}</span>. 
                       {t(
-                        ' Your contract will be référencé en Unités LYA sur la plateforme to ensure accessibilité et stabilité globales.',
-                        ' Votre contrat sera référencé en Unités LYA sur la plateforme pour assurer la accessibilité et stabilité mondiales.'
+                        ' Your project\'s certified valuation will be referenced against this standard on the platform to ensure global accessibility and consistency.',
+                        ' La valorisation certifiée de votre projet sera référencée par rapport à ce standard sur la plateforme pour assurer une accessibilité et une cohérence mondiales.'
                       )}
                     </p>
                     <div className="pt-4 border-t border-primary-cyan/10 space-y-2">
@@ -1009,14 +1009,14 @@ export const LinkArtView: React.FC<{
                     <div className="space-y-4">
                       <div>
                         <h4 className="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('Registry Address', 'Adresse du Registre')}</h4>
-                        <p className="text-sm font-mono text-on-surface">0x7F9D...E2A4 (LYA SYSTEM_PENDING)</p>
+                        <p className="text-sm font-mono text-on-surface">{t('Pending assignment', 'En attente d\'attribution')}</p>
                       </div>
                       <div>
                         <h4 className="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('Contract Creation Date', 'Date de Création du Contrat')}</h4>
                         <p className="text-sm font-mono text-on-surface">{new Date().toLocaleDateString(t('en-US', 'fr-FR'), { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                       </div>
                       <div className="pt-2 border-t border-white/5">
-                        <h4 className="text-xs uppercase tracking-widest text-accent-gold font-bold mb-1">{t('Required Initial Deposit', 'Dépôt Initial Requis')}</h4>
+                        <h4 className="text-xs uppercase tracking-widest text-accent-gold font-bold mb-1">{t('Estimated Certification Fee', 'Frais de Certification Estimés')}</h4>
                         <p className="text-lg font-black text-accent-gold italic">{formatPrice(initialDepositAmount)} <span className="text-[10px] opacity-60">({depositPercentage}%)</span></p>
                       </div>
                     </div>
@@ -1037,7 +1037,7 @@ export const LinkArtView: React.FC<{
                         <h4 className="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-1">{t('Contract Status', 'Statut du Contrat')}</h4>
                         <div className="flex items-center gap-2">
                           <div className="w-1.5 h-1.5 bg-accent-gold rounded-full animate-pulse" />
-                          <span className="text-sm font-bold text-accent-gold uppercase tracking-widest">{t('Pending Deployment', 'Déploiement en Attente')}</span>
+                          <span className="text-sm font-bold text-accent-gold uppercase tracking-widest">{t('Pending Certification Review', 'En Attente d\'Examen de Certification')}</span>
                         </div>
                       </div>
                     </div>
@@ -1064,8 +1064,8 @@ export const LinkArtView: React.FC<{
                 <div className="p-6 bg-primary-cyan/5 border border-primary-cyan/20">
                   <p className="text-xs text-primary-cyan leading-relaxed uppercase tracking-wider text-center">
                     {t(
-                      'By clicking "Deploy Contract", you authorize the LYA Registry to generate a contrat numérique certifié on the registre certifié. This action is irreversible.',
-                      'En cliquant sur "Déployer le Contrat", vous autorisez la plateforme LYA à générer un contrat numérique certifié sur le registre certifié. Cette action est irréversible.'
+                      'By clicking "Submit for Certification", you authorize LYA to review your project for certification and registry entry. This action starts an irreversible certification process.',
+                      'En cliquant sur "Soumettre pour Certification", vous autorisez LYA à examiner votre projet en vue de sa certification et de son inscription au registre. Cette action déclenche un processus de certification irréversible.'
                     )}
                   </p>
                 </div>
@@ -1104,7 +1104,7 @@ export const LinkArtView: React.FC<{
             </>
           ) : (
             <>
-              {currentStep === STEPS.length ? t('Deploy Contract', 'Déployer le Contrat') : t('Next Step', 'Étape Suivante')}
+              {currentStep === STEPS.length ? t('Submit for Certification', 'Soumettre pour Certification') : t('Next Step', 'Étape Suivante')}
               <ChevronRight size={16} />
             </>
           )}

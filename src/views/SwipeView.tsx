@@ -272,7 +272,7 @@ export const SwipeView: React.FC<SwipeViewProps> = ({
                     <p className="text-sm font-black text-on-surface truncate">{proj.name}</p>
                     <p className="text-xs text-on-surface-variant/50">{proj.category}</p>
                     <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-xs font-black text-accent-gold">LYA UNIT: {formatPrice(lyaUnit)}</span>
+                      <span className="text-xs font-black text-accent-gold">Valorisation: {formatPrice(lyaUnit)}</span>
                       <span className={`text-xs font-black ${up ? 'text-emerald-400' : 'text-rose-400'}`}>{up ? '+' : ''}{proj.growth}%</span>
                     </div>
                   </div>
@@ -432,14 +432,14 @@ export const SwipeView: React.FC<SwipeViewProps> = ({
                 {/* Info Section */}
                 <div className="flex-1 flex flex-col gap-2 p-3 overflow-hidden pointer-events-none min-h-0">
 
-                  {/* LYA SCORE + LYA UNIT */}
+                  {/* LYA SCORE + Valorisation */}
                   <div className="grid grid-cols-2 gap-2 shrink-0">
                     <div className="bg-[#a78bfa]/10 border border-[#a78bfa]/25 rounded-xl p-2 text-center">
                       <p className="text-[8px] font-black text-[#a78bfa] uppercase tracking-widest">LYA Score</p>
                       <p className="text-base font-black text-white leading-tight">{currentContract.totalScore}<span className="text-[8px] text-white/30">/1000</span></p>
                     </div>
                     <div className={`border rounded-xl p-2 text-center ${currentContract.growth >= 0 ? 'bg-emerald-400/10 border-emerald-400/25' : 'bg-rose-400/10 border-rose-400/25'}`}>
-                      <p className="text-[8px] font-black text-accent-gold uppercase tracking-widest">LYA UNIT</p>
+                      <p className="text-[8px] font-black text-accent-gold uppercase tracking-widest">Valorisation</p>
                       <p className="text-base font-black text-accent-gold leading-tight">{formatPrice(LYA_UNIT_VALUE * (1 + currentContract.growth / 100))}</p>
                       <p className={`text-[8px] font-black ${currentContract.growth >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>{currentContract.growth >= 0 ? '+' : ''}{currentContract.growth}%</p>
                     </div>

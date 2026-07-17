@@ -30,7 +30,6 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
 
   const [activeSection, setActiveSection] = useState<'portfolio'|'investments'|'analytics'|'social'>('portfolio');
   const [compareMode, setCompareMode] = useState<'bars'|'radar'>('bars');
-  const [predHorizon, setPredHorizon] = useState<'7j'|'30j'|'90j'|'1an'>('30j');
   const [showFilters, setShowFilters] = useState(false);
   const [sendingReport, setSendingReport] = useState(false);
   const [contactProject, setContactProject] = useState<string|null>(null);
@@ -96,8 +95,6 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
   const winners = myInvestments.filter(x => x.roi > 0).length;
   const losers = myInvestments.filter(x => x.roi < 0).length;
 
-  const predMultiplier = predHorizon === '7j' ? 1.02 : predHorizon === '30j' ? 1.097 : predHorizon === '90j' ? 1.18 : 1.32;
-  const predBase = totalCurrent;
 
   const trends = [
     {cat:T('Art Digital','Digital Art'),pct:'+12.5',up:true},
@@ -108,7 +105,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
   ];
 
   const alerts = [
-    {textFR:`${CONTRACTS[4].name} a perdu -28% — votre LYA UNIT est passé à ${formatPrice(unitPrice(CONTRACTS[4].growth))}`,textEN:`${CONTRACTS[4].name} lost -28% — your LYA UNIT dropped to ${formatPrice(unitPrice(CONTRACTS[4].growth))}`,time:T('Il y a 2h','2h ago'),type:'danger'},
+    {textFR:`${CONTRACTS[4].name} a reculé de -28% au Score LYA — valorisation de référence à ${formatPrice(unitPrice(CONTRACTS[4].growth))}`,textEN:`${CONTRACTS[4].name} dropped -28% in LYA Score — reference valuation now ${formatPrice(unitPrice(CONTRACTS[4].growth))}`,time:T('Il y a 2h','2h ago'),type:'danger'},
     {textFR:`${CONTRACTS[0].name} a atteint un nouveau jalon +15%`,textEN:`${CONTRACTS[0].name} reached a new milestone +15%`,time:T('Il y a 5h','5h ago'),type:'success'},
     {textFR:`${CONTRACTS[5].name} est passé en statut RISQUE`,textEN:`${CONTRACTS[5].name} moved to RISK status`,time:T('Il y a 1j','1 day ago'),type:'warning'},
   ];
@@ -176,7 +173,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                 {[
                   {icon:<DollarSign size={18} className="text-primary-cyan"/>,label:T('Investi total','Total invested'),value:formatPrice(totalInvested),sub:`${myInvestments.length} ${T('projets','projects')}`,up:true,color:'bg-primary-cyan/10'},
                   {icon:<TrendingUp size={18} className={avgRoi>=0?'text-emerald-400':'text-rose-400'}/>,label:T('Valeur actuelle','Current value'),value:formatPrice(totalCurrent),sub:`${avgRoi>=0?'+':''}${avgRoi.toFixed(1)}% ROI`,up:avgRoi>=0,color:avgRoi>=0?'bg-emerald-400/10':'bg-rose-400/10'},
-                  {icon:<Sparkles size={18} className="text-[#a78bfa]"/>,label:T('LYA UNIT moyen','Avg LYA UNIT'),value:formatPrice(myInvestments.reduce((s,x)=>s+unitPrice(x.proj.growth),0)/myInvestments.length),sub:`Base: ${formatPrice(LYA_UNIT_VALUE)}`,up:avgRoi>=0,color:'bg-[#a78bfa]/10'},
+                  {icon:<Sparkles size={18} className="text-[#a78bfa]"/>,label:T('Valorisation moyenne','Avg valuation'),value:formatPrice(myInvestments.reduce((s,x)=>s+unitPrice(x.proj.growth),0)/myInvestments.length),sub:`Base: ${formatPrice(LYA_UNIT_VALUE)}`,up:avgRoi>=0,color:'bg-[#a78bfa]/10'},
                   {icon:<Star size={18} className="text-accent-gold"/>,label:T('Gagnants / Perdants','Winners / Losers'),value:`${winners}/${losers}`,sub:T(`${losers} en négatif`,`${losers} negative`),up:winners>losers,color:'bg-accent-gold/10'},
                 ].map((k,i)=>(
                   <div key={i} className="bg-surface-low/40 border border-white/8 rounded-2xl p-4 space-y-2 hover:border-white/15 transition-all">
@@ -188,12 +185,12 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                 ))}
               </div>
 
-              {/* LYA UNIT encadré */}
+              {/* Valorisation encadré */}
               <div className="bg-gradient-to-r from-accent-gold/8 to-primary-cyan/5 border border-accent-gold/20 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <div className="w-10 h-10 bg-accent-gold/15 border border-accent-gold/25 rounded-xl flex items-center justify-center shrink-0"><span className="text-accent-gold font-black text-xs">LYA</span></div>
                 <div className="flex-1">
-                  <p className="text-xs font-black text-accent-gold uppercase tracking-widest mb-0.5">LYA UNIT — {T('Index de valeur de vos soutiens','Value index of your pledges')}</p>
-                  <p className="text-xs text-on-surface-variant/60">{T('La valeur de vos LYA Units fluctue avec les jalons et le LYA Score de chaque projet. Certains projets peuvent perdre de la valeur.','Your LYA Units value fluctuates with milestones and each project\'s LYA Score. Some projects may lose value.')}</p>
+                  <p className="text-xs font-black text-accent-gold uppercase tracking-widest mb-0.5">{T('Valorisation — Index de vos soutiens','Valuation — Index of your pledges')}</p>
+                  <p className="text-xs text-on-surface-variant/60">{T('La valorisation de référence de vos soutiens évolue avec les jalons et le Score LYA de chaque projet. Certains projets peuvent voir leur score reculer.','The reference valuation of your pledges evolves with milestones and each project\'s LYA Score. Some projects may see their score decline.')}</p>
                 </div>
                 <div className="text-right shrink-0">
                   <p className="text-[10px] text-on-surface-variant/40 uppercase">{T('Profit / Perte','Profit / Loss')}</p>
@@ -232,7 +229,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                     {[
                       {l:T('Meilleur soutien','Best pledge'),v:`+${Math.max(...myInvestments.map(x=>x.roi)).toFixed(1)}%`,c:'text-emerald-400'},
                       {l:T('Pire soutien','Worst pledge'),v:`${Math.min(...myInvestments.map(x=>x.roi)).toFixed(1)}%`,c:'text-rose-400'},
-                      {l:T('LYA UNIT le plus haut','Highest LYA UNIT'),v:formatPrice(Math.max(...myInvestments.map(x=>unitPrice(x.proj.growth)))),c:'text-accent-gold'},
+                      {l:T('Valorisation la plus haute','Highest valuation'),v:formatPrice(Math.max(...myInvestments.map(x=>unitPrice(x.proj.growth)))),c:'text-accent-gold'},
                       {l:T('Investi moyen','Avg invested'),v:formatPrice(totalInvested/myInvestments.length),c:'text-on-surface'},
                     ].map((s,i)=>(
                       <div key={i} className="flex justify-between items-center py-1.5 border-b border-white/5 last:border-0">
@@ -271,7 +268,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                 const currentVal = inv.invested * (1 + inv.roi/100);
                 const profit = currentVal - inv.invested;
                 const lyaUnitActuel = unitPrice(inv.proj.growth);
-                // Prix d'achat simulé = LYA UNIT base ajusté légèrement
+                // Valorisation simulée = base ajustée légèrement selon le score
                 const lyaUnitAchat = LYA_UNIT_VALUE * (1 + (inv.proj.growth * 0.3) / 100);
                 // Volume = nombre d'unités achetées
                 const volume = Math.round(inv.invested / lyaUnitAchat);
@@ -313,11 +310,11 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                       ))}
                     </div>
 
-                    {/* Données LYA UNIT détaillées */}
+                    {/* Données de valorisation détaillées */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 divide-x divide-white/6 border-t border-white/6 bg-surface-high/20">
                       {[
                         {l:T('Prix d\'achat UNIT','Purchase price UNIT'), v:formatPrice(lyaUnitAchat), c:'text-on-surface-variant', icon:'🏷'},
-                        {l:T('LYA UNIT actuel','Current LYA UNIT'), v:formatPrice(lyaUnitActuel), c:up?'text-emerald-400':'text-rose-400', icon:'📈'},
+                        {l:T('Valorisation actuelle','Current valuation'), v:formatPrice(lyaUnitActuel), c:up?'text-emerald-400':'text-rose-400', icon:'📈'},
                         {l:T('Volume (unités)','Volume (units)'), v:volume.toLocaleString(), c:'text-primary-cyan', icon:'🔢'},
                         {l:T('Plus-value UNIT','Unit capital gain'), v:`${plusValue>=0?'+':''}${formatPrice(plusValue)}`, c:plusValue>=0?'text-emerald-400':'text-rose-400', icon:'💰'},
                       ].map((s,si)=>(
@@ -381,7 +378,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                   {l:T('Investi total','Total invested'),v:formatPrice(totalInvested),sub:`${myInvestments.length} soutiens`,c:'text-primary-cyan'},
                   {l:T('Valeur actuelle','Current value'),v:formatPrice(totalCurrent),sub:`${avgRoi>=0?'+':''}${avgRoi.toFixed(1)}%`,c:avgRoi>=0?'text-emerald-400':'text-rose-400'},
                   {l:T('Projets gagnants','Winning projects'),v:`${winners}/${myInvestments.length}`,sub:`${losers} ${T('perdants','losing')}`,c:'text-[#a78bfa]'},
-                  {l:T('LYA UNIT min','Min LYA UNIT'),v:formatPrice(Math.min(...myInvestments.map(x=>unitPrice(x.proj.growth)))),sub:T('votre plus bas','your lowest'),c:'text-rose-400'},
+                  {l:T('Valorisation min','Min valuation'),v:formatPrice(Math.min(...myInvestments.map(x=>unitPrice(x.proj.growth)))),sub:T('votre plus bas','your lowest'),c:'text-rose-400'},
                 ].map((k,i)=>(
                   <div key={i} className="bg-surface-low/40 border border-white/8 rounded-2xl p-4">
                     <p className="text-xs text-on-surface-variant/50">{k.l}</p>
@@ -400,7 +397,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
               {/* Comparateur */}
               <div className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-4">
                 <div className="flex items-center justify-between flex-wrap gap-3">
-                  <p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('LYA UNIT par soutien','LYA UNIT per pledge')}</p>
+                  <p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Valorisation par soutien','Valuation per pledge')}</p>
                   <div className="flex gap-1">
                     {(['bars','radar'] as const).map(m=><button key={m} onClick={()=>setCompareMode(m)} className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all ${compareMode===m?'bg-primary-cyan/15 border border-primary-cyan/30 text-primary-cyan':'text-on-surface-variant hover:text-on-surface border border-white/8'}`}>{m==='bars'?T('Barres','Bars'):'Radar'}</button>)}
                   </div>
@@ -410,7 +407,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                     {compareMode === 'bars' ? (
                       <BarChart data={myInvestments.map(x=>({name:x.proj.registryIndex.split('-')[0],unit:+unitPrice(x.proj.growth).toFixed(2),up:x.roi>=0}))}>
                         <XAxis dataKey="name" tick={{fill:'rgba(255,255,255,0.4)',fontSize:9}} axisLine={false} tickLine={false}/>
-                        <Tooltip contentStyle={{background:'#0f121a',border:'1px solid rgba(255,255,255,0.1)',borderRadius:8,fontSize:11}} formatter={(v:number)=>[formatPrice(v),'LYA UNIT']}/>
+                        <Tooltip contentStyle={{background:'#0f121a',border:'1px solid rgba(255,255,255,0.1)',borderRadius:8,fontSize:11}} formatter={(v:number)=>[formatPrice(v),'Valorisation']}/>
                         <Bar dataKey="unit" radius={[4,4,0,0]}>{myInvestments.map((x,i)=><Cell key={i} fill={x.roi>=0?'#10b981':'#f43f5e'}/>)}</Bar>
                       </BarChart>
                     ) : (
@@ -425,29 +422,7 @@ export const InvestorDashboardView: React.FC<{user:UserProfile|null;onNotify:(ms
                 <p className="text-xs text-on-surface-variant/40">{T('Vert = en hausse · Rouge = en baisse · Base = ','Green = rising · Red = falling · Base = ')}{formatPrice(LYA_UNIT_VALUE)}</p>
               </div>
 
-              {/* Prédiction */}
-              <div className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-4">
-                <div className="flex items-center justify-between flex-wrap gap-3">
-                  <div className="flex items-center gap-2"><Sparkles size={14} className="text-[#a78bfa]"/><p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Prédiction Portfolio','Portfolio Prediction')}</p></div>
-                  <div className="text-right"><p className="text-[10px] text-on-surface-variant/40 uppercase">{T('Confiance IA','AI Confidence')}</p><p className="text-base font-black text-emerald-400">78%</p></div>
-                </div>
-                <div className="grid grid-cols-4 gap-2">
-                  {(['7j','30j','90j','1an'] as const).map(h=><button key={h} onClick={()=>setPredHorizon(h)} className={`py-2 rounded-xl text-xs font-black transition-all ${predHorizon===h?'bg-[#a78bfa] text-surface-dim':'bg-surface-high/30 border border-white/8 text-on-surface-variant hover:text-on-surface'}`}>{h}</button>)}
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    {l:T('Prévision','Forecast'),v:formatPrice(predBase*predMultiplier),c:'text-[#a78bfa]',sub:`+${((predMultiplier-1)*100).toFixed(1)}%`},
-                    {l:T('Tendance','Trend'),v:T('Mixte','Mixed'),c:'text-accent-gold',sub:T('Prudence recommandée','Caution advised')},
-                    {l:T('Scénario baissier','Bear scenario'),v:formatPrice(predBase*0.85),c:'text-rose-400',sub:'-15%'},
-                  ].map((s,i)=>(
-                    <div key={i} className="bg-surface-high/30 border border-white/6 rounded-xl p-3">
-                      <p className="text-[10px] text-on-surface-variant/40 uppercase tracking-widest mb-1">{s.l}</p>
-                      <p className={`text-base font-black ${s.c}`}>{s.v}</p>
-                      <p className="text-xs text-on-surface-variant/40">{s.sub}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+
 
               {/* ROI par type */}
               <div className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-3">

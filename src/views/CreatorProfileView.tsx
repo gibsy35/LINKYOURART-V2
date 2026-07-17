@@ -164,7 +164,7 @@ export const CreatorProfileView: React.FC<Props> = ({ creatorId, onViewChange, o
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/6 border-t border-white/6">
                   {[
-                    { l: 'LYA UNIT', v: formatPrice(lya), c: 'text-accent-gold' },
+                    { l: 'Valorisation', v: formatPrice(lya), c: 'text-accent-gold' },
                     { l: T('Variation','Change'), v: `${pUp?'+':''}${proj.growth}%`, c: pUp ? 'text-emerald-400' : 'text-rose-400' },
                     { l: 'LYA Score', v: `${proj.totalScore}/1000`, c: 'text-[#a78bfa]' },
                     { l: T('Rev. partagés','Rev. share'), v: `${proj.revenueSharePercentage}%`, c: 'text-primary-cyan' },

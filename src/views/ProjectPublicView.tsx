@@ -46,7 +46,7 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
   React.useEffect(() => {
     updatePageMeta({
       title: `${project.name} — LYA Score ${project.totalScore}/1000`,
-      description: `${project.category} · LYA UNIT: ${formatPrice(lya)} (${up ? '+' : ''}${project.growth}%) · ${project.description?.slice(0, 120)}`,
+      description: `${project.category} · Valorisation: ${formatPrice(lya)} (${up ? '+' : ''}${project.growth}%) · ${project.description?.slice(0, 120)}`,
       image: getSafeImageUrl(project.image, project.category),
       url: `https://linkyourart.com?project=${project.id}`,
     });
@@ -68,7 +68,7 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
   };
 
   const shareTwitter = () => window.open(
-    `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${project.name} — LYA Score ${project.totalScore}/1000 · LYA UNIT ${formatPrice(lya)} sur @LinkYourArt`)}&url=${encodeURIComponent(`${window.location.origin}?project=${project.id}`)}`,
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${project.name} — LYA Score ${project.totalScore}/1000 · Valorisation ${formatPrice(lya)} sur @LinkYourArt`)}&url=${encodeURIComponent(`${window.location.origin}?project=${project.id}`)}`,
     '_blank'
   );
 
@@ -104,18 +104,18 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
         </div>
       </div>
 
-      {/* ── SECTION 2 : PRIX LYA UNIT EN GROS ───────────────────────────── */}
+      {/* ── SECTION 2 : VALORISATION EN GROS ───────────────────────────── */}
       <div className={`rounded-2xl p-5 mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border ${up ? 'bg-emerald-400/5 border-emerald-400/20' : 'bg-rose-400/5 border-rose-400/20'}`}>
         <div>
           <p className="text-xs font-black text-on-surface-variant/50 uppercase tracking-widest mb-1">
-            {T('Valeur LYA UNIT actuelle', 'Current LYA UNIT value')}
+            {T('Valorisation de référence actuelle', 'Current reference valuation')}
           </p>
           <p className={`text-5xl font-black font-mono ${up ? 'text-emerald-400' : 'text-rose-400'}`}>{formatPrice(lya)}</p>
           <div className="flex items-center gap-3 mt-2 flex-wrap">
             <span className={`flex items-center gap-1 text-sm font-black ${up ? 'text-emerald-400' : 'text-rose-400'}`}>
               {up ? <ArrowUpRight size={16}/> : <ArrowDownRight size={16}/>}{up ? '+' : ''}{project.growth}%
             </span>
-            <span className="text-xs text-on-surface-variant/40">{T('Prix de base:', 'Base price:')} {formatPrice(LYA_UNIT_VALUE)}</span>
+            <span className="text-xs text-on-surface-variant/40">{T('Valorisation de base:', 'Base valuation:')} {formatPrice(LYA_UNIT_VALUE)}</span>
           </div>
         </div>
         <div className="text-right shrink-0">
@@ -179,12 +179,12 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
             <p className="text-sm text-on-surface-variant/70 leading-relaxed">{project.description}</p>
           </div>
 
-          {/* Graphe LYA UNIT */}
+          {/* Graphe de valorisation */}
           <div className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
-                <h2 className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Évolution du LYA UNIT', 'LYA UNIT Evolution')}</h2>
-                <p className="text-xs text-on-surface-variant/40 mt-0.5">{T('Prix × variation depuis l\'émission', 'Price × change since issuance')}</p>
+                <h2 className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Évolution de la valorisation', 'Valuation evolution')}</h2>
+                <p className="text-xs text-on-surface-variant/40 mt-0.5">{T('Valorisation certifiée depuis l\'émission', 'Certified valuation since issuance')}</p>
               </div>
               <div className="text-right">
                 <p className={`text-2xl font-black font-mono ${up ? 'text-emerald-400' : 'text-rose-400'}`}>{formatPrice(lya)}</p>
@@ -203,14 +203,14 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
                   <Area type="monotone" dataKey="v" stroke={up ? '#10b981' : '#f43f5e'} strokeWidth={2.5} fill="url(#lyaGrad)" dot={false}/>
                   <XAxis dataKey="t" hide/>
                   <Tooltip contentStyle={{ background: '#0f121a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 11 }}
-                    formatter={(v: number) => [formatPrice(v), 'LYA UNIT']}/>
+                    formatter={(v: number) => [formatPrice(v), T('Valorisation','Valuation')]}/>
                 </AreaChart>
               </ResponsiveContainer>
             </div>
             <p className="text-[10px] text-on-surface-variant/30 text-center">
               {up
-                ? T(`Ce projet a généré +${project.growth}% depuis son émission. LYA UNIT passé de ${formatPrice(LYA_UNIT_VALUE)} à ${formatPrice(lya)}.`, `This project generated +${project.growth}% since issuance. LYA UNIT moved from ${formatPrice(LYA_UNIT_VALUE)} to ${formatPrice(lya)}.`)
-                : T(`Ce projet a perdu ${project.growth}% depuis son émission. LYA UNIT passé de ${formatPrice(LYA_UNIT_VALUE)} à ${formatPrice(lya)}.`, `This project lost ${project.growth}% since issuance. LYA UNIT moved from ${formatPrice(LYA_UNIT_VALUE)} to ${formatPrice(lya)}.`)
+                ? T(`Ce projet a progressé de +${project.growth}% au Score LYA depuis son émission. Valorisation passée de ${formatPrice(LYA_UNIT_VALUE)} à ${formatPrice(lya)}.`, `This project's LYA Score improved by +${project.growth}% since issuance. Valuation moved from ${formatPrice(LYA_UNIT_VALUE)} to ${formatPrice(lya)}.`)
+                : T(`Ce projet a reculé de ${project.growth}% au Score LYA depuis son émission. Valorisation passée de ${formatPrice(LYA_UNIT_VALUE)} à ${formatPrice(lya)}.`, `This project's LYA Score declined by ${project.growth}% since issuance. Valuation moved from ${formatPrice(LYA_UNIT_VALUE)} to ${formatPrice(lya)}.`)
               }
             </p>
           </div>
@@ -237,7 +237,7 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
                       </div>
                       {m.priceImpact && (
                         <span className={`text-sm font-black shrink-0 ${m.priceImpact > 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                          {m.priceImpact > 0 ? '+' : ''}{m.priceImpact}% LYA UNIT
+                          {m.priceImpact > 0 ? '+' : ''}{m.priceImpact}% Score
                         </span>
                       )}
                     </div>
@@ -297,7 +297,7 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
               { l: T('Catégorie', 'Category'), v: project.category },
               { l: T('Statut', 'Status'), v: project.status },
               { l: T('Part des revenus nets', 'Net revenue share'), v: `${project.revenueSharePercentage}%` },
-              { l: 'LYA UNIT', v: formatPrice(lya) },
+              { l: 'Valorisation', v: formatPrice(lya) },
               { l: T('Variation depuis émission', 'Change since issuance'), v: `${up?'+':''}${project.growth}%` },
             ].map((s,i) => (
               <div key={i} className="flex justify-between items-center py-1.5 border-b border-white/5 last:border-0">
@@ -393,7 +393,7 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
                   <div className="p-3 space-y-1">
                     <p className="text-sm font-black text-on-surface truncate">{s.name}</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-xs font-black text-accent-gold">LYA UNIT {formatPrice(unitPrice(s.growth))}</p>
+                      <p className="text-xs font-black text-accent-gold">{T('Valorisation','Valuation')} {formatPrice(unitPrice(s.growth))}</p>
                       <p className={`text-xs font-black flex items-center gap-0.5 ${sup?'text-emerald-400':'text-rose-400'}`}>
                         {sup?<ArrowUpRight size={11}/>:<ArrowDownRight size={11}/>}{sup?'+':''}{s.growth}%
                       </p>

@@ -157,8 +157,8 @@ const LYASimulator: React.FC<{ lang: 'FR' | 'EN'; formatPrice: (n: number) => st
             </div>
             {totalPts >= 700 && (
               <div className="bg-primary-cyan/5 border border-primary-cyan/15 rounded-xl p-4">
-                <p className="text-xs font-black text-primary-cyan uppercase tracking-widest mb-1">{T('Estimation LYA UNIT','LYA UNIT Estimate')}</p>
-                <p className="text-sm text-on-surface-variant/70">{T(`Avec un score de ${totalPts}/1000, votre LYA UNIT de départ serait estimé à`, `With a score of ${totalPts}/1000, your starting LYA UNIT would be estimated at`)} <span className="text-primary-cyan font-black">{formatPrice(LYA_UNIT_VALUE * (1 + (totalPts/1000) * 0.5))}</span></p>
+                <p className="text-xs font-black text-primary-cyan uppercase tracking-widest mb-1">{T('Estimation de Valorisation','Valuation Estimate')}</p>
+                <p className="text-sm text-on-surface-variant/70">{T(`Avec un score de ${totalPts}/1000, votre projet serait éligible à une valorisation de référence estimée à`, `With a score of ${totalPts}/1000, your project would be eligible for an estimated reference valuation of`)} <span className="text-primary-cyan font-black">{formatPrice(LYA_UNIT_VALUE * (1 + (totalPts/1000) * 0.5))}</span></p>
               </div>
             )}
             <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
@@ -305,7 +305,7 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                   {icon:<DollarSign size={18} className="text-[#a78bfa]"/>, label:T('Valeur totale','Total value'), value:formatPrice(totalValue), sub:`${avgGrowth>=0?'+':''}${avgGrowth.toFixed(1)}%`, up:avgGrowth>=0, color:'bg-[#a78bfa]/10'},
                   {icon:<Users size={18} className="text-primary-cyan"/>, label:T('Mécènes actifs','Active patrons'), value:'290', sub:'+8 '+T('ce mois','this month'), up:true, color:'bg-primary-cyan/10'},
                   {icon:<Sparkles size={18} className="text-emerald-400"/>, label:T('Projets LIVE','LIVE Projects'), value:String(liveCount), sub:`${riskCount} ${T('en risque','at risk')}`, up:false, color:'bg-emerald-400/10'},
-                  {icon:<Target size={18} className="text-accent-gold"/>, label:T('LYA UNIT moyen','Avg LYA UNIT'), value:formatPrice(LYA_UNIT_VALUE*(1+avgGrowth/100)), sub:`Base: ${formatPrice(LYA_UNIT_VALUE)}`, up:avgGrowth>=0, color:'bg-accent-gold/10'},
+                  {icon:<Target size={18} className="text-accent-gold"/>, label:T('Score LYA moyen','Avg LYA Score'), value:`${Math.round(700+avgGrowth*3)}/1000`, sub:`${T('Tendance','Trend')}: ${avgGrowth>=0?'+':''}${avgGrowth.toFixed(1)}%`, up:avgGrowth>=0, color:'bg-accent-gold/10'},
                 ].map((k,i) => (
                   <div key={i} className="bg-surface-low/40 border border-white/8 rounded-2xl p-4 space-y-2 hover:border-white/15 transition-all">
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${k.color}`}>{k.icon}</div>
@@ -318,17 +318,17 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                 ))}
               </div>
 
-              {/* LYA UNIT encadré */}
+              {/* Score LYA encadré */}
               <div className="bg-gradient-to-r from-accent-gold/8 to-[#a78bfa]/5 border border-accent-gold/20 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <div className="w-12 h-12 bg-accent-gold/15 border border-accent-gold/25 rounded-xl flex items-center justify-center shrink-0">
                   <span className="text-accent-gold font-black text-xs">LYA</span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs font-black text-accent-gold uppercase tracking-widest mb-1">LYA UNIT — {T('Index de valeur créative','Creative value index')}</p>
-                  <p className="text-sm text-on-surface-variant/70 leading-relaxed">{T('Chaque création LYA est indexée en LYA Units. La valeur évolue selon les jalons, le LYA Score et les échanges sur le marché secondaire.','Each LYA creation is indexed in LYA Units. Value evolves according to milestones, LYA Score and secondary market trades.')}</p>
+                  <p className="text-xs font-black text-accent-gold uppercase tracking-widest mb-1">{T('Score LYA — Index de qualité créative','LYA Score — Creative quality index')}</p>
+                  <p className="text-sm text-on-surface-variant/70 leading-relaxed">{T('Chaque création LYA est évaluée par le Score LYA. Le score évolue selon les jalons validés et l\'audit professionnel continu.','Each LYA creation is evaluated through the LYA Score. The score evolves according to validated milestones and ongoing professional audit.')}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="text-xs text-on-surface-variant/40 uppercase tracking-widest">{T('Valeur de base','Base value')}</p>
+                  <p className="text-xs text-on-surface-variant/40 uppercase tracking-widest">{T('Valorisation de référence','Reference valuation')}</p>
                   <p className="text-2xl font-black text-accent-gold font-mono">{formatPrice(LYA_UNIT_VALUE)}</p>
                   <p className={`text-xs font-bold mt-0.5 ${avgGrowth>=0?'text-emerald-400':'text-rose-400'}`}>{avgGrowth>=0?'+':''}{avgGrowth.toFixed(1)}% {T('tendance actuelle','current trend')}</p>
                 </div>
@@ -369,7 +369,7 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                           </ResponsiveContainer>
                         </div>
                         <div className="grid grid-cols-3 gap-2">
-                          <div className="bg-surface-high/30 rounded-lg p-2"><p className="text-[9px] text-on-surface-variant/40 uppercase">{T('LYA UNIT','LYA UNIT')}</p><p className="text-xs font-black text-accent-gold">{formatPrice(unitPrice(proj.growth))}</p></div>
+                          <div className="bg-surface-high/30 rounded-lg p-2"><p className="text-[9px] text-on-surface-variant/40 uppercase">{T('Valorisation','Valuation')}</p><p className="text-xs font-black text-accent-gold">{formatPrice(unitPrice(proj.growth))}</p></div>
                           <div className="bg-surface-high/30 rounded-lg p-2"><p className="text-[9px] text-on-surface-variant/40 uppercase">{T('Variation','Change')}</p><p className={`text-xs font-black ${up?'text-emerald-400':'text-rose-400'}`}>{up?'+':''}{proj.growth}%</p></div>
                           <div className="bg-surface-high/30 rounded-lg p-2"><p className="text-[9px] text-on-surface-variant/40 uppercase">{T('Mécènes','Patrons')}</p><p className="text-xs font-black text-on-surface">{87+idx*116}</p></div>
                         </div>
@@ -423,7 +423,7 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                       <p className="text-xs text-on-surface-variant/50">{proj.category} · {proj.registryIndex}</p>
                     </div>
                     <div className="text-right shrink-0 space-y-0.5">
-                      <p className="text-xs text-on-surface-variant/40 uppercase tracking-widest">LYA UNIT</p>
+                      <p className="text-xs text-on-surface-variant/40 uppercase tracking-widest">{T('Valorisation','Valuation')}</p>
                       <p className="text-sm font-black text-accent-gold">{formatPrice(unitPrice(proj.growth))}</p>
                       <p className={`text-xs font-black flex items-center justify-end gap-0.5 ${up?'text-emerald-400':'text-rose-400'}`}>
                         {up?<ArrowUpRight size={11}/>:<ArrowDownRight size={11}/>}{up?'+':''}{proj.growth}%
@@ -500,7 +500,7 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                         </div>
                         <div className="flex-1"><p className="text-sm font-black text-on-surface">{m.label}</p><p className="text-xs text-on-surface-variant/50">{m.date}</p></div>
                         <div className="text-right shrink-0">
-                          {m.priceImpact && <p className={`text-xs font-black ${m.priceImpact>0?'text-emerald-400':'text-rose-400'}`}>{m.priceImpact>0?'+':''}{m.priceImpact}% LYA UNIT</p>}
+                          {m.priceImpact && <p className={`text-xs font-black ${m.priceImpact>0?'text-emerald-400':'text-rose-400'}`}>{m.priceImpact>0?'+':''}{m.priceImpact}% {T('Score','Score')}</p>}
                           <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${m.status==='COMPLETED'?'bg-emerald-400/10 text-emerald-400':m.status==='FAILED'?'bg-rose-400/10 text-rose-400':m.status==='IN_PROGRESS'?'bg-primary-cyan/10 text-primary-cyan':'bg-white/5 text-on-surface-variant/40'}`}>{m.status==='COMPLETED'?T('Complété','Completed'):m.status==='FAILED'?T('Échoué','Failed'):m.status==='IN_PROGRESS'?T('En cours','In progress'):T('À venir','Upcoming')}</span>
                         </div>
                       </div>
@@ -517,7 +517,7 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
               <div className="text-center space-y-1">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-cyan/10 border border-primary-cyan/20 rounded-full text-[10px] font-black text-primary-cyan uppercase tracking-widest"><Target size={11}/> {T('Outil Créateur','Creator Tool')}</div>
                 <h2 className="font-headline font-black text-on-surface text-2xl tracking-tight">{T('Simulateur','Simulator')} <span className="text-primary-cyan">LYA</span></h2>
-                <p className="text-xs text-on-surface-variant/50">{T('Estimez votre score LYA et votre LYA UNIT avant soumission','Estimate your LYA score and LYA UNIT before submission')}</p>
+                <p className="text-xs text-on-surface-variant/50">{T('Estimez votre score LYA et votre valorisation avant soumission','Estimate your LYA score and valuation before submission')}</p>
               </div>
               <LYASimulator lang={lang} formatPrice={formatPrice} onViewChange={onViewChange}/>
             </div>
@@ -558,14 +558,14 @@ export const CreatorDashboardView: React.FC<{user:UserProfile|null;onNotify:(msg
                 <p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Carte de Chaleur d\'Engagement','Engagement Heat Map')}</p>
                 <HeatmapCard lang={lang}/>
               </div>
-              {/* LYA UNIT par projet */}
+              {/* Valorisation par projet */}
               <div className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-4">
-                <p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('LYA UNIT par projet','LYA UNIT per project')}</p>
+                <p className="text-sm font-black text-on-surface uppercase tracking-wider">{T('Valorisation par projet','Valuation per project')}</p>
                 <div className="h-40">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={allProjects.slice(0,8).map(c=>({name:c.registryIndex.split('-')[0],unit:+unitPrice(c.growth).toFixed(2),up:c.growth>=0}))}>
                       <XAxis dataKey="name" tick={{fill:'rgba(255,255,255,0.4)',fontSize:9}} axisLine={false} tickLine={false}/>
-                      <Tooltip contentStyle={{background:'#0f121a',border:'1px solid rgba(255,255,255,0.1)',borderRadius:8,fontSize:11}} formatter={(v:number)=>[formatPrice(v),'LYA UNIT']}/>
+                      <Tooltip contentStyle={{background:'#0f121a',border:'1px solid rgba(255,255,255,0.1)',borderRadius:8,fontSize:11}} formatter={(v:number)=>[formatPrice(v),'Valorisation']}/>
                       <Bar dataKey="unit" radius={[4,4,0,0]}>{allProjects.slice(0,8).map((c,i)=><Cell key={i} fill={c.growth>=0?'#10b981':'#f43f5e'}/>)}</Bar>
                     </BarChart>
                   </ResponsiveContainer>

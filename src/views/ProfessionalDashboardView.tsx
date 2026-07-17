@@ -70,7 +70,7 @@ export const ProfessionalDashboardView: React.FC<{user:UserProfile|null;onNotify
   const academyModules = [
     {titleFR:'LYA — Fondamentaux',titleEN:'LYA — Fundamentals',descFR:'Maîtrisez les bases du scoring LYA et des 5 piliers d\'évaluation.',descEN:'Master the fundamentals of LYA scoring and the 5 evaluation pillars.',duration:'4h',level:T('Débutant','Beginner'),done:true,color:'bg-primary-cyan/10 border-primary-cyan/20'},
     {titleFR:'Due Diligence Créative Avancée',titleEN:'Advanced Creative Due Diligence',descFR:'Techniques d\'audit approfondi pour les projets culturels et artistiques.',descEN:'In-depth audit techniques for cultural and artistic projects.',duration:'6h',level:T('Intermédiaire','Intermediate'),done:true,color:'bg-[#a78bfa]/10 border-[#a78bfa]/20'},
-    {titleFR:'Valorisation & LYA UNIT',titleEN:'Valuation & LYA UNIT',descFR:'Calculez et optimisez la valeur LYA UNIT de chaque création.',descEN:'Calculate and optimise the LYA UNIT value of each creation.',duration:'3h',level:T('Intermédiaire','Intermediate'),done:false,color:'bg-accent-gold/10 border-accent-gold/20'},
+    {titleFR:'Valorisation & Certification',titleEN:'Valuation & Certification',descFR:'Calculez et optimisez la valorisation certifiée de chaque création.',descEN:'Calculate and optimise the certified valuation of each creation.',duration:'3h',level:T('Intermédiaire','Intermediate'),done:false,color:'bg-accent-gold/10 border-accent-gold/20'},
     {titleFR:'Stratégie de Lancement Institutionnel',titleEN:'Institutional Launch Strategy',descFR:'Planifiez et exécutez des lancements à impact maximal.',descEN:'Plan and execute maximum-impact launches.',duration:'5h',level:T('Avancé','Advanced'),done:false,color:'bg-emerald-400/10 border-emerald-400/20'},
     {titleFR:'Réseau & Partenariats Créatifs',titleEN:'Network & Creative Partnerships',descFR:'Construisez un réseau institutionnel solide dans les industries créatives.',descEN:'Build a solid institutional network in creative industries.',duration:'4h',level:T('Avancé','Advanced'),done:false,locked:true,color:'bg-rose-400/10 border-rose-400/20'},
     {titleFR:'Certification LYA Expert',titleEN:'LYA Expert Certification',descFR:'Validation officielle de votre expertise par le comité LYA.',descEN:'Official validation of your expertise by the LYA committee.',duration:'8h',level:T('Expert','Expert'),done:false,locked:true,color:'bg-white/5 border-white/10'},
@@ -153,15 +153,15 @@ export const ProfessionalDashboardView: React.FC<{user:UserProfile|null;onNotify
                 <KpiCard icon={<BarChart2 size={18} className="text-accent-gold"/>} label={T('Score professionnel','Professional score')} value="940/1000" sub="+15 ce mois" color="bg-accent-gold/10"/>
               </div>
 
-              {/* LYA UNIT encadré */}
+              {/* Valorisation encadré */}
               <div className="bg-gradient-to-r from-primary-cyan/8 to-[#a78bfa]/5 border border-primary-cyan/20 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <div className="w-10 h-10 bg-primary-cyan/15 border border-primary-cyan/25 rounded-xl flex items-center justify-center shrink-0"><span className="text-primary-cyan font-black text-xs">LYA</span></div>
                 <div className="flex-1">
-                  <p className="text-xs font-black text-primary-cyan uppercase tracking-widest mb-0.5">LYA UNIT — {T('Valeur de référence créative','Creative reference value')}</p>
-                  <p className="text-xs text-on-surface-variant/60 leading-relaxed">{T('Vos validations influencent directement le LYA UNIT des projets. Plus votre score pro est élevé, plus votre certification fait monter la valeur des créations.','Your validations directly influence project LYA UNIT values. The higher your pro score, the more your certification raises creation value.')}</p>
+                  <p className="text-xs font-black text-primary-cyan uppercase tracking-widest mb-0.5">{T('Valorisation — Valeur de référence créative','Valuation — Creative reference value')}</p>
+                  <p className="text-xs text-on-surface-variant/60 leading-relaxed">{T('Vos validations influencent directement la valorisation certifiée des projets. Plus votre score pro est élevé, plus votre certification fait monter la valeur des créations.','Your validations directly influence the certified valuation of projects. The higher your pro score, the more your certification raises creation value.')}</p>
                 </div>
                 <div className="text-right shrink-0">
-                  <p className="text-[10px] text-on-surface-variant/40 uppercase tracking-widest">LYA UNIT base</p>
+                  <p className="text-[10px] text-on-surface-variant/40 uppercase tracking-widest">{T('Valorisation de base','Base valuation')}</p>
                   <p className="text-2xl font-black text-primary-cyan font-mono">{formatPrice(LYA_UNIT_VALUE)}</p>
                   <p className="text-xs text-on-surface-variant/40">{T('Étalon souverain','Sovereign standard')}</p>
                 </div>
@@ -185,7 +185,7 @@ export const ProfessionalDashboardView: React.FC<{user:UserProfile|null;onNotify
                     </div>
                     <div className="text-right shrink-0">
                       <p className="text-xs font-black text-accent-gold">Score: {proj.totalScore}</p>
-                      <p className={`text-xs font-bold ${proj.growth>=0?'text-emerald-400':'text-rose-400'}`}>{proj.growth>=0?'+':''}{proj.growth}% · LYA UNIT: {formatPrice(unitPrice(proj.growth))}</p>
+                      <p className={`text-xs font-bold ${proj.growth>=0?'text-emerald-400':'text-rose-400'}`}>{proj.growth>=0?'+':''}{proj.growth}% · {T('Valorisation','Valuation')}: {formatPrice(unitPrice(proj.growth))}</p>
                     </div>
                     <button onClick={()=>{onNotify(T(`✦ Dossier ${proj.name} ouvert`,'File opened'));}} className="p-1.5 text-on-surface-variant hover:text-primary-cyan transition-colors shrink-0"><ArrowRight size={14}/></button>
                   </div>
@@ -249,7 +249,7 @@ export const ProfessionalDashboardView: React.FC<{user:UserProfile|null;onNotify
                       <div className="flex-1 min-w-0"><p className="text-sm font-black text-on-surface">{proj.name}</p><p className="text-xs text-on-surface-variant/50">{proj.category} · {proj.registryIndex}</p></div>
                       <div className="text-right shrink-0">
                         <p className="text-base font-black text-accent-gold">{proj.totalScore}<span className="text-xs text-on-surface-variant/30">/1000</span></p>
-                        <p className={`text-xs font-bold ${proj.growth>=0?'text-emerald-400':'text-rose-400'}`}>LYA UNIT: {formatPrice(unitPrice(proj.growth))}</p>
+                        <p className={`text-xs font-bold ${proj.growth>=0?'text-emerald-400':'text-rose-400'}`}>{T('Valorisation','Valuation')}: {formatPrice(unitPrice(proj.growth))}</p>
                         <button onClick={async()=>{
   try {
     await addDoc(collection(db,'messages'),{type:'deal_request',projectName:proj.name,projectId:proj.id,fromId:user?.uid,fromName:user?.displayName,fromRole:'PROFESSIONAL',toId:proj.issuerId,status:'PENDING',createdAt:serverTimestamp()});
@@ -267,7 +267,7 @@ export const ProfessionalDashboardView: React.FC<{user:UserProfile|null;onNotify
           {/* ── MISSIONS ─────────────────────────────────────────────────── */}
           {activeSection==='missions' && (
             <div className="space-y-4">
-              <p className="text-sm text-on-surface-variant/60">{missions.length} {T('missions · Score LYA & LYA UNIT impactés par vos validations','missions · LYA Score & LYA UNIT impacted by your validations')}</p>
+              <p className="text-sm text-on-surface-variant/60">{missions.length} {T('missions · Score LYA & valorisation impactés par vos validations','missions · LYA Score & valuation impacted by your validations')}</p>
               {missions.slice(0,missionsShown).map((m,i)=>(
                 <div key={i} className="bg-surface-low/40 border border-white/8 rounded-2xl p-5 space-y-4 hover:border-white/15 transition-all">
                   <div className="flex items-start justify-between flex-wrap gap-3">
