@@ -1714,7 +1714,7 @@ export const AdminView: React.FC<{
 
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="text-[9px] font-black text-white/40 uppercase tracking-widest block mb-1">LYA UNIT variation %</label>
+                            <label className="text-[9px] font-black text-white/40 uppercase tracking-widest block mb-1">Valorisation - variation %</label>
                             <input type="number" min="-100" max="500" value={publishForm.growth}
                               onChange={e => setPublishForm(f => ({...f, growth: parseFloat(e.target.value)}))}
                               className="w-full bg-black/30 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary-cyan/50"/>
@@ -1739,7 +1739,7 @@ export const AdminView: React.FC<{
                         </div>
 
                         <div className="bg-accent-gold/10 border border-accent-gold/20 rounded-xl p-3 text-center">
-                          <p className="text-[9px] text-white/40 uppercase tracking-widest">LYA UNIT au lancement</p>
+                          <p className="text-[9px] text-white/40 uppercase tracking-widest">Valorisation au lancement</p>
                           <p className="text-xl font-black text-accent-gold">${(50 * (1 + publishForm.growth / 100)).toFixed(2)}</p>
                         </div>
                       </div>

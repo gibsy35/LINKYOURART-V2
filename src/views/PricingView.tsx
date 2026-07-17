@@ -511,7 +511,7 @@ const PricingView: React.FC<PricingViewProps> = ({ onSelectPlan, onNotify }) => 
                         <span className="text-xs font-black text-primary-cyan font-mono">{assessmentResult.auditIndexScore}%</span>
                       </div>
                       <span className="text-[10px] text-on-surface-variant/75 block">
-                        {t('Score representing how easily your contracts can bypass validation buffers.', 'Indice représentant la facilité d\'intégration directe dans notre registre sans sas de conformité légale manuel.')}
+                        {t('Score representing your project\'s readiness for fast-track certification review.', 'Indice représentant le niveau de préparation de votre projet pour un examen de certification accéléré.')}
                       </span>
                     </div>
                     

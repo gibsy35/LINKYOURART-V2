@@ -169,7 +169,7 @@ const SupportSimulatorWidget: React.FC<{ lang: 'FR' | 'EN', formatPrice: (n: num
       </div>
       <div className="space-y-1.5">
         <div className="flex justify-between">
-          <p className="text-[11px] font-mono text-on-surface-variant/50 uppercase tracking-widest">{T('UNITÉS LYA', 'LYA UNITS')}</p>
+          <p className="text-[11px] font-mono text-on-surface-variant/50 uppercase tracking-widest">{T('NIVEAU DE SOUTIEN', 'SUPPORT LEVEL')}</p>
           <p className="text-[11px] font-black text-primary-cyan">{units} {T('unités', 'units')}</p>
         </div>
         <input type="range" min={1} max={100} value={units} onChange={e => setUnits(+e.target.value)} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-primary-cyan" />
@@ -291,7 +291,7 @@ const LYAConverterWidget: React.FC<{ lang: 'FR' | 'EN' }> = ({ lang }) => {
       </div>
       <div className="space-y-1.5">
         <div className="flex justify-between">
-          <p className="text-[11px] font-mono text-on-surface-variant/50 uppercase tracking-widest">{T('UNITÉS LYA', 'LYA UNITS')}</p>
+          <p className="text-[11px] font-mono text-on-surface-variant/50 uppercase tracking-widest">{T('NIVEAU DE SOUTIEN', 'SUPPORT LEVEL')}</p>
           <p className="text-[11px] font-black text-on-surface">{units}</p>
         </div>
         <input type="range" min={1} max={250} value={units} onChange={e => setUnits(+e.target.value)} className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-rose-400" />
@@ -300,9 +300,9 @@ const LYAConverterWidget: React.FC<{ lang: 'FR' | 'EN' }> = ({ lang }) => {
         </div>
       </div>
       <div className="bg-surface-high/40 border border-white/8 rounded-xl p-4 text-center">
-        <p className="text-[11px] font-mono text-on-surface-variant/50 mb-1">{units} LYA UNIT{units > 1 ? 'S' : ''} =</p>
+        <p className="text-[11px] font-mono text-on-surface-variant/50 mb-1">{T('Montant du soutien', 'Support amount')} =</p>
         <p className="text-2xl font-black font-mono text-rose-400">{symbols[currency]}{converted}</p>
-        <p className="text-xs font-mono text-on-surface-variant/30 mt-1">1 LYA UNIT = {symbols[currency]}{(LYA_UNIT_VALUE * rates[currency]).toFixed(2)}</p>
+        <p className="text-xs font-mono text-on-surface-variant/30 mt-1">{T('Base', 'Base')} = {symbols[currency]}{(LYA_UNIT_VALUE * rates[currency]).toFixed(2)}</p>
       </div>
     </div>
   );

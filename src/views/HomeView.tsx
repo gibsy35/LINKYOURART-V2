@@ -353,13 +353,13 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
           </h2>
           <p className="text-white/50 text-base max-w-2xl mx-auto leading-relaxed font-medium">
             {t(
-              'Each project starts at $50/unit. Every milestone validated pushes the score up and the price with it. Every risk declared pulls it down. Transparently. In real time.',
-              'Chaque projet démarre à $50/unité. Chaque jalon validé fait monter le score — et le prix avec. Chaque risque déclaré le fait baisser. En toute transparence, en temps réel.'
+              'Every project is evaluated against a common LYA Score standard. Every milestone validated pushes the score up. Every risk declared pulls it down. Transparently. In real time.',
+              'Chaque projet est évalué selon un standard commun, le Score LYA. Chaque jalon validé fait monter le score. Chaque risque déclaré le fait baisser. En toute transparence, en temps réel.'
             )}
           </p>
         </div>
 
-        {/* ── 1 LYA UNIT = $50 ANCHOR ──────────────────────────── */}
+        {/* ── LYA VALUATION STANDARD ANCHOR ──────────────────────────── */}
         <div className="flex items-center justify-center gap-6 mb-5 md:mb-10 lg:mb-6 md:mb-10 lg:mb-16">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/10" />
           <div className="flex items-center gap-4 px-6 py-3 border border-white/10 bg-white/[0.02] flex-wrap">
@@ -367,11 +367,11 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
               <Coins size={14} className="text-primary-cyan" />
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">{t('Fixed issuance price', 'Prix d\'émission fixe — USD')}</p>
-              <p className="text-lg font-black text-white font-mono">1 LYA UNIT = <span className="text-primary-cyan">$50.00</span></p>
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">{t('Reference valuation standard', 'Standard de valorisation de référence')}</p>
+              <p className="text-lg font-black text-white font-mono">{t('Base', 'Base')} = <span className="text-primary-cyan">$50.00</span></p>
             </div>
             <div className="ml-4 px-3 py-1 bg-emerald-400/10 border border-emerald-400/20">
-              <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400">{t('Immutable', 'Immuable')}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400">{t('Certified', 'Certifié')}</p>
             </div>
           </div>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/10" />
@@ -851,8 +851,8 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
 
                          <div className="flex justify-between items-center">
                            <div className="flex flex-col">
-                             <span className="text-[10px] font-black uppercase text-primary-cyan tracking-widest">{t('PROJECTED LYA UNIT PRICE', 'PRIX DE L\'UNITÉ LYA')}</span>
-                             <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">LYA CONTRACT VALUE</span>
+                             <span className="text-[10px] font-black uppercase text-primary-cyan tracking-widest">{t('REFERENCE VALUATION', 'VALORISATION DE RÉFÉRENCE')}</span>
+                             <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">{t('CERTIFIED PROJECT VALUE', 'VALEUR CERTIFIÉE DU PROJET')}</span>
                            </div>
                            <div className="text-2xl font-black font-headline text-primary-cyan">{formatPrice(demoProjectedUnitVal)}</div>
                          </div>
@@ -860,7 +860,7 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                          <div className="flex justify-between items-center">
                            <div className="flex flex-col">
                              <span className="text-[10px] font-black uppercase text-emerald-400 tracking-widest">{t('PROJECTED TOTAL VALUE', 'VALORISATION GLOBALE')}</span>
-                             <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">10,000 INDEXED SHARES</span>
+                             <span className="text-[10px] font-mono text-white/30 tracking-widest uppercase">{t('CERTIFIED PROJECT TOTAL', 'TOTAL CERTIFIÉ DU PROJET')}</span>
                            </div>
                            <div className="text-2xl font-black font-headline text-emerald-400">{formatPrice(demoProjectedTotalVal)}</div>
                          </div>

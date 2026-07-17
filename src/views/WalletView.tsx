@@ -159,11 +159,11 @@ export const WalletView: React.FC<WalletViewProps> = ({ user, onNotify, onViewCh
           <div className="bg-surface-low border border-white/5 p-8 rounded-[2.5rem] relative overflow-hidden group h-full">
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent-gold/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-accent-gold/10 transition-all" />
             <h3 className="text-[10px] font-black text-accent-gold uppercase tracking-[0.4em] mb-6 flex items-center gap-2">
-              <Zap size={14} /> {t('REVENUS AMPLIFIÉS', 'AMPLIFIED REVENUES')}
+              <Zap size={14} /> {t('PROJETS CERTIFIÉS', 'CERTIFIED PROJECTS')}
             </h3>
-            <p className="text-2xl font-black text-white font-headline tracking-tight mb-4">+8.4% <span className="text-xs uppercase text-on-surface-variant">APY</span></p>
+            <p className="text-2xl font-black text-white font-headline tracking-tight mb-4">{transactions.filter(t => t.type === 'CERTIFICATION_FEE').length} <span className="text-xs uppercase text-on-surface-variant">{t('actifs', 'active')}</span></p>
             <p className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold leading-relaxed mb-8 opacity-60">
-              {t('Your units are generating daily rewards through secondary market distribution.', 'Vos unités génèrent des récompenses quotidiennes via la distribution du marché secondaire.')}
+              {t('Consultez le statut de certification et le Score LYA de vos projets soutenus.', 'Check the certification status and LYA Score of your supported projects.')}
             </p>
             <button 
               onClick={() => onViewChange('REGISTRY')}

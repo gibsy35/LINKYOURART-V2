@@ -42,7 +42,7 @@ export const OnboardingWizard: React.FC<Props> = ({ onComplete, onSkip }) => {
       descEN: 'I want to support creators and co-own artistic projects.',
       perks: [
         T('Portfolio en temps réel', 'Real-time portfolio'),
-        T('LYA UNIT suivi par projet', 'LYA UNIT tracked per project'),
+        T('Suivi de valorisation par projet', 'Valuation tracking per project'),
         T('Rapport mensuel personnalisé', 'Personalised monthly report'),
       ],
     },

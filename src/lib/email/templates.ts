@@ -351,7 +351,7 @@ export function templateWelcome({ name, role, lang = 'FR' }: {
       <div class="divider"></div>
 
       <div class="stat-row"><span class="stat-label">${isFR ? 'Protocole' : 'Protocol'}</span><span class="stat-value cyan">LYA v3.0</span></div>
-      <div class="stat-row"><span class="stat-label">${isFR ? 'Valeur unitaire' : 'Unit value'}</span><span class="stat-value gold">1 LYA UNIT = $50.00</span></div>
+      <div class="stat-row"><span class="stat-label">${isFR ? 'Valorisation de référence' : 'Reference valuation'}</span><span class="stat-value gold">$50.00</span></div>
       <div class="stat-row"><span class="stat-label">${isFR ? 'Statut' : 'Status'}</span><span class="stat-value green">${isFR ? 'ACTIF' : 'ACTIVE'}</span></div>
 
       <a href="https://www.linkyourart.com" class="cta-btn">→ ${isFR ? 'ACCÉDER À MON ESPACE LYA' : 'ACCESS MY LYA SPACE'}</a>

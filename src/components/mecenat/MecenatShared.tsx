@@ -389,7 +389,7 @@ export function DetailModal({ contract, onClose, onPay, units, onUnitsChange, la
             {/* Sélecteur d'unités */}
             <div className="mb-4">
               <div className="flex justify-between items-center mb-1.5">
-                <span className="text-on-surface-variant/50 text-xs font-mono tracking-widest">{T("LYA UNITS À ACQUÉRIR", "LYA UNITS TO ACQUIRE")}</span>
+                <span className="text-on-surface-variant/50 text-xs font-mono tracking-widest">{T("NIVEAU DE SOUTIEN", "SUPPORT LEVEL")}</span>
                 <span style={{ background: "linear-gradient(135deg,rgba(0,212,255,0.2),rgba(99,102,241,0.2))", border: "1px solid rgba(0,212,255,0.4)" }} className="text-primary-cyan text-[10px] px-3.5 py-1 rounded-md font-mono font-black">
                   {units} {T("Units", "Units")}
                 </span>
@@ -407,7 +407,7 @@ export function DetailModal({ contract, onClose, onPay, units, onUnitsChange, la
                 {T("QUITTER", "EXIT")}
               </button>
               <button onClick={onPay} className="w-full font-bold font-mono py-3.5 rounded-xl transition-opacity text-xs tracking-widest text-black" style={{ background: "linear-gradient(135deg,#00ff88,#00d4ff)" }}>
-                ✦ {T(`ACQUÉRIR ${units} LYA UNITS`, `ACQUIRE ${units} LYA UNITS`)}
+                ✦ {T(`SOUTENIR CE PROJET — ${(units * getUnitPrice(contract)).toFixed(2)}$`, `SUPPORT THIS PROJECT — $${(units * getUnitPrice(contract)).toFixed(2)}`)}
               </button>
             </div>
           </div>
@@ -417,14 +417,14 @@ export function DetailModal({ contract, onClose, onPay, units, onUnitsChange, la
   );
 }
 
-// ─── LYA UNIT DÉFINITION ──────────────────────────────────────────────────────
+// ─── STANDARD LYA DÉFINITION ──────────────────────────────────────────────────
 
 export function WhatIsLyaUnit({ lang }: { lang: "FR" | "EN" }) {
   const T = (fr: string, en: string) => lang === "FR" ? fr : en;
   const cols = [
-    { num: "01", color: "#00d4ff", titleFR: "MESURE ÉVOLUTIVE", titleEN: "EVOLUTIONARY MEASURE", textFR: "C'est l'unité de cotation officielle qui mesure la valeur évolutive d'une création.", textEN: "It is the official quotation unit that measures the evolving value of a creation." },
-    { num: "02", color: "#ff6b6b", titleFR: "NI CRYPTO, NI DEVISE", titleEN: "NOT A CRYPTO", textFR: "Ce n'est PAS une monnaie classique ou une crypto.", textEN: "It is NOT a classic currency or a crypto." },
-    { num: "03", color: "#00ff88", titleFR: "VALEUR STRUCTURELLE", titleEN: "STRUCTURED STATE", textFR: "C'est une unité de valeur structurée qui représente l'état réel, la solidité et la trajectoire d'une création.", textEN: "It is a structured unit of value representing the real state, solidity and trajectory of a creation." },
+    { num: "01", color: "#00d4ff", titleFR: "STANDARD DE RÉFÉRENCE", titleEN: "REFERENCE STANDARD", textFR: "C'est le standard de valorisation objectif qui reflète la certification et la progression d'une création.", textEN: "It is the objective valuation standard that reflects the certification and progress of a creation." },
+    { num: "02", color: "#ff6b6b", titleFR: "NI CRYPTO, NI DEVISE", titleEN: "NOT A CRYPTO", textFR: "Ce n'est PAS une monnaie classique, une crypto, ni un instrument négociable.", textEN: "It is NOT a classic currency, a crypto, or a negotiable instrument." },
+    { num: "03", color: "#00ff88", titleFR: "VALEUR STRUCTURELLE", titleEN: "STRUCTURED STATE", textFR: "C'est une référence de valeur structurée qui représente l'état réel, la solidité et la trajectoire d'une création.", textEN: "It is a structured value reference representing the real state, solidity and trajectory of a creation." },
   ];
   return (
     <div className="bg-surface-low/60 border border-white/10 rounded-2xl p-6 md:p-10 mb-8">
@@ -433,7 +433,7 @@ export function WhatIsLyaUnit({ lang }: { lang: "FR" | "EN" }) {
           <p className="text-on-surface-variant/50 text-[10px] font-mono tracking-widest mb-3">{T("DÉFINITION OFFICIELLE", "OFFICIAL DEFINITION")}</p>
           <div className="inline-block border border-white/20 rounded-lg px-3 py-2 bg-white/5 mb-3">
             <h3 className="text-on-surface font-black leading-tight text-sm md:text-base" style={{ fontFamily: "Inter,system-ui,-apple-system,sans-serif", letterSpacing: "-0.01em" }}>
-              {T("QU'EST-CE QUE LE LYA UNIT ?", "WHAT IS THE LYA UNIT?")}
+              {T("QU'EST-CE QUE LE STANDARD LYA ?", "WHAT IS THE LYA STANDARD?")}
             </h3>
           </div>
           <div className="w-16 h-1 rounded-full mt-1" style={{ background: "linear-gradient(90deg,#00d4ff,#a78bfa)" }} />
@@ -521,13 +521,13 @@ export function ProjectCard({ contract, lang, onViewProject, onSupport, isWatchl
             </p>
           </div>
 
-          {/* Badge LYA UNIT — premium compact */}
+          {/* Badge Valorisation — premium compact */}
           <div style={{
             background: "linear-gradient(135deg, rgba(0,212,255,0.9) 0%, rgba(99,102,241,0.9) 100%)",
             boxShadow: "0 0 8px rgba(0,212,255,0.4), 0 1px 4px rgba(0,0,0,0.4)",
             border: "1px solid rgba(0,212,255,0.35)",
           }} className="rounded-md px-3 py-1 backdrop-blur-sm w-[80px]">
-            <p className="text-[7px] font-mono font-bold text-cyan-900/70 tracking-widest leading-none mb-0.5">LYA UNIT</p>
+            <p className="text-[7px] font-mono font-bold text-cyan-900/70 tracking-widest leading-none mb-0.5">VALORISATION</p>
             <p className="text-white font-black font-mono text-xs leading-none">
               ${unitPrice.toFixed(2)}<span className="text-cyan-200/50 font-normal text-[10px]">/u</span>
             </p>
@@ -594,7 +594,7 @@ export function ProjectCard({ contract, lang, onViewProject, onSupport, isWatchl
       <div className="px-4 py-3 space-y-2.5 flex-1 flex flex-col">
         <div className="flex justify-between items-center">
           <span className="text-on-surface text-[10px] font-mono font-bold tracking-wider">
-            {T("VOLUME D'ACQUISITION DES PARTS LYA", "LYA UNITS ACQUISITION VOLUME")}
+            {T("NIVEAU DE SOUTIEN CHOISI", "CHOSEN SUPPORT LEVEL")}
           </span>
           <span style={{
             background: "linear-gradient(135deg, rgba(0,212,255,0.2) 0%, rgba(99,102,241,0.2) 100%)",

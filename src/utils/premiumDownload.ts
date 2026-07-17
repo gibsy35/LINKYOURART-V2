@@ -217,37 +217,37 @@ export function downloadWalletStatement(
 
 // ─── RESOURCE / WHITEPAPER ───────────────────────────────────────────────────
 const RESOURCE_CONTENTS: Record<string, { subtitle: string; sections: { title: string; body: string }[] }> = {
-  'Protocol Whitepaper v3.0': {
-    subtitle: 'ARCHITECTURE TECHNIQUE & CADRE DE GOUVERNANCE',
+  'LYA Score Methodology': {
+    subtitle: 'STANDARD DE CERTIFICATION & MÉTHODOLOGIE D\'ÉVALUATION',
     sections: [
-      { title: 'RÉSUMÉ', body: 'LinkYourArt (LYA) est une infrastructure de capital créatif décentralisée permettant la propriété fractionnée, le règlement en temps réel et la garde institutionnelle des actifs de propriété intellectuelle. La version 3.0 introduit un calcul amélioré du LYA Score, des couches de conformité multi-juridictionnelles et une distribution dynamique des redevances via des nœuds de règlement intelligents.' },
-      { title: 'ARCHITECTURE DU LYA SYSTEME', body: 'Le Plateforme LYA fonctionne via une pile à trois couches : (1) la couche Registre offrant un stockage et une vérification immuables des contrats ; (2) la couche Règlement permettant des transferts P2P en temps réel avec chiffrement AES-256 ; (3) la couche Gouvernance où les parties prenantes Professionnelles et Investisseurs votent sur les mises à niveau du protocole via un mécanisme de vote quadratique pondéré par le LYA Score.' },
-      { title: 'MÉTHODOLOGIE DU LYA SCORE', body: "Chaque contrat créatif reçoit un LYA Score composite (0-100) calculé à partir de cinq dimensions validées : Qualité Créative (25%), Potentiel de Marché (25%), Conformité Juridique (20%), Indice d'Innovation (15%) et Trajectoire de Croissance (15%). Les scores sont calculés par des validateurs Professionnels certifiés et mis à jour trimestriellement." },
-      { title: 'ÉCONOMIE DES UNITÉS LYA', body: "Les Unités LYA ont une valeur nominale de 50€. Chaque contrat définit son offre totale d'unités à l'émission. Les distributions de revenus sont exécutées automatiquement lors d'événements de complétion de jalons vérifiés. Le protocole facture des frais de règlement de 1,5% sur les transactions secondaires." }
+      { title: 'RÉSUMÉ', body: 'LinkYourArt (LYA) est une infrastructure de certification et de traçabilité pour les industries créatives. La plateforme évalue, certifie et suit objectivement les projets créatifs à travers un standard commun : le Score LYA.' },
+      { title: 'ARCHITECTURE DU SYSTÈME LYA', body: 'La plateforme LYA repose sur trois piliers : (1) le Registre, offrant un stockage et une vérification immuables des certifications ; (2) l\'Audit, combinant évaluation algorithmique et validation par des professionnels certifiés ; (3) la Certification, délivrant un score objectif et vérifiable pour chaque projet créatif.' },
+      { title: 'MÉTHODOLOGIE DU LYA SCORE', body: "Chaque projet créatif reçoit un LYA Score composite (0-1000) calculé à partir de cinq piliers certifiés : Intégrité Conceptuelle, Maturité Actuelle, Capacité d'Évolution, Faisabilité et Incarnation Réelle (200 points chacun). Les scores sont calculés par des validateurs Professionnels certifiés et mis à jour à chaque jalon." },
+      { title: 'CERTIFICATION & VALORISATION DE RÉFÉRENCE', body: "Chaque projet certifié dispose d'une valorisation de référence, calculée à partir de son Score LYA. Cette valorisation est un indicateur de qualité et de progression, et ne constitue ni un prix de marché, ni un instrument financier négociable." }
     ]
   },
-  'Market Analysis Q1 2026': {
-    subtitle: 'RAPPORT DE MARCHÉ DE L\'ÉCONOMIE CRÉATIVE · T1 2026',
+  'Certification Standards Report': {
+    subtitle: 'RAPPORT SUR LES STANDARDS DE CERTIFICATION DE L\'ÉCONOMIE CRÉATIVE',
     sections: [
-      { title: 'SYNTHÈSE EXÉCUTIVE', body: 'Le T1 2026 marque un trimestre pivot pour le marché du capital créatif. La valeur totale verrouillée sur la plateforme LYA a atteint 42,7 M€, représentant une augmentation de 34% en glissement annuel. Les actifs Film & TV ont mené la croissance à +41%, suivis par la Musique (+28%) et l\'Architecture (+19%). Le volume du marché secondaire a atteint 8,2 M€ sur 14 200 transferts d\'unités individuels.' },
-      { title: 'SECTEURS LES PLUS PERFORMANTS', body: 'Les Séries Télévisées de Science-Fiction sont apparues comme la catégorie au rendement le plus élevé avec un APY moyen de 22,4%. Les films documentaires ont démontré les meilleurs rendements ajustés au risque avec un ratio de Sharpe de 1,84. Les contrats d\'Architecture ont montré les valorisations les plus stables avec une variance trimestrielle < 5%.' },
-      { title: 'FACTEURS DE RISQUE & PERSPECTIVES', body: 'La concurrence accrue des contenus générés par l\'IA continue de faire pression sur les catégories Photographie et Illustration. La clarification réglementaire dans l\'UE concernant la fractionnalisation numérique de la PI est attendue au T3 2026. Nous projetons un TVL total du protocole atteignant 65 M€ d\'ici fin 2026 selon notre scénario de base.' }
+      { title: 'SYNTHÈSE', body: 'Ce rapport présente l\'état des certifications actives sur la plateforme LinkYourArt et les tendances observées par secteur créatif. Il a pour objet d\'informer les créateurs, mécènes et partenaires professionnels sur la rigueur et la couverture du standard LYA.' },
+      { title: 'RÉPARTITION PAR SECTEUR', body: 'Les projets certifiés couvrent aujourd\'hui le Film & TV, la Musique, l\'Architecture, le Design et le Gaming. Chaque secteur bénéficie d\'une méthodologie d\'évaluation adaptée à ses spécificités, tout en conservant le même barème de score sur 1000 points.' },
+      { title: 'PERSPECTIVES', body: 'LinkYourArt poursuit l\'extension de son registre de certification à de nouveaux secteurs créatifs, en s\'appuyant sur un réseau croissant de validateurs professionnels indépendants.' }
     ]
   },
   'Legal Framework Guide': {
     subtitle: 'JURIDICTION, CONFORMITÉ & NORMES CONTRACTUELLES',
     sections: [
-      { title: 'CADRE RÉGLEMENTAIRE', body: 'Les contrats LYA opèrent dans une structure juridique hybride combinant des accords de licence de PI traditionnels avec des mécanismes de transfert d\'unités numériques natifs. Les contrats sont structurés comme des accords de participation accordant aux détenteurs d\'unités des droits économiques proportionnels sur des flux de revenus définis, sans conférer de propriété en capital dans l\'entité créatrice sous-jacente.' },
-      { title: 'JURIDICTIONS SUPPORTÉES', body: 'Le Plateforme LYA supporte actuellement l\'émission de contrats sous le Droit Français (cadres SACD/SCAM), le Droit Anglais (conformité CDPA 1988) et les cadres de PI fédéraux américains/Delaware. La conformité RGPD est appliquée au niveau des données. La conformité réglementaire MiCA est maintenue via des audits juridiques trimestriels.' },
-      { title: 'DROITS & PROTECTIONS DES CRÉATEURS', body: 'Les créateurs conservent tous leurs droits moraux et le contrôle créatif de leurs œuvres. Les détenteurs d\'unités ne reçoivent que des droits de participation économique. Tous les contrats incluent des dispositions de rachat obligatoires permettant aux créateurs de racheter les unités en circulation à la valeur marchande équitable déterminée par le modèle de valorisation LYA Score.' }
+      { title: 'CADRE RÉGLEMENTAIRE', body: 'LinkYourArt opère comme une plateforme de certification et d\'évaluation. Le Score LYA et les certifications délivrées ne constituent ni un titre financier, ni un produit d\'investissement réglementé. LinkYourArt travaille en continu avec ses conseils juridiques pour garantir la conformité de son offre.' },
+      { title: 'JURIDICTIONS SUPPORTÉES', body: 'La plateforme LYA opère actuellement sous le droit français, avec une attention particulière portée aux cadres de propriété intellectuelle applicables (SACD/SCAM) et à la conformité RGPD au niveau des données.' },
+      { title: 'DROITS & PROTECTIONS DES CRÉATEURS', body: 'Les créateurs conservent tous leurs droits moraux et le contrôle créatif de leurs œuvres. Les mécènes ne reçoivent qu\'un droit de participation économique contractuel, non négociable et non cessible sans accord écrit préalable de LinkYourArt.' }
     ]
   },
-  'Node Operator Manual': {
-    subtitle: 'GUIDE DE CONFIGURATION & D\'EXPLOITATION DES NŒUDS',
+  'Professional Validator Handbook': {
+    subtitle: 'GUIDE DE VALIDATION & DE CERTIFICATION PROFESSIONNELLE',
     sections: [
-      { title: 'PRÉSENTATION DES NŒUDS', body: 'Les nœuds de règlement constituent l\'infrastructure centrale de la plateforme LYA, responsables de la validation des transferts d\'unités, du calcul des LYA Scores en temps réel et de l\'exécution des distributions automatiques de revenus. Les nœuds nécessitent un stake minimum de 1 000 Unités LYA et maintiennent un SLA de disponibilité de 99,5% pour se qualifier à la distribution des frais.' },
-      { title: 'CONFIGURATION TECHNIQUE', body: 'Spécifications minimales : CPU 8 cœurs, 32 Go de RAM, SSD NVMe 500 Go, connexion réseau symétrique 1 Gbps. Les nœuds communiquent via le Protocole Mesh LYA (LMP) en utilisant gRPC sur TLS 1.3. Le SDK LYA (Node.js ≥18 ou Python ≥3.11) fournit l\'implémentation de référence pour l\'exploitation et la surveillance des nœuds.' },
-      { title: 'STRUCTURE DES RÉCOMPENSES', body: 'Les nœuds actifs gagnent 0,8% de tous les frais de règlement traités via leur nœud, plus un bonus de disponibilité de 0,1% pour les nœuds maintenant > 99,9% de disponibilité mensuelle. Les récompenses sont distribuées quotidiennement en Unités LYA au prix spot actuel.' }
+      { title: 'RÔLE DU VALIDATEUR', body: 'Les validateurs professionnels certifiés sont responsables de l\'évaluation experte des projets créatifs soumis sur la plateforme, en complément de l\'analyse algorithmique du Score LYA. Leur validation est requise pour toute certification officielle.' },
+      { title: 'PROCESSUS DE VALIDATION', body: 'Chaque dossier de certification est examiné selon les cinq piliers du Score LYA. Le validateur documente ses conclusions, propose un score par pilier, et soumet son évaluation au comité de certification LYA pour confirmation finale.' },
+      { title: 'RÉMUNÉRATION', body: 'Les validateurs perçoivent des honoraires de validation, calculés en pourcentage de la valeur du contrat évalué, versés directement et distribués automatiquement à la complétion du processus de validation.' }
     ]
   }
 };
