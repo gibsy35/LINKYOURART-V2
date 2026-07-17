@@ -1,0 +1,6 @@
+{
+  "name": "LinkYourArt",
+  "description": "Plateforme d'infrastructure mondiale de certification, de notation objective (LYA Score) et de traçabilité des créations artistiques.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

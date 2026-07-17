@@ -1,0 +1,91 @@
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig, loadEnv} from 'vite';
+
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, '.', '');
+  return {
+    plugins: [react(), tailwindcss()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/storage'],
+            'vendor-motion': ['motion/react'],
+            'vendor-charts': ['recharts'],
+            'vendor-icons': ['lucide-react'],
+            'views-admin': [
+              './src/views/AdminView.tsx',
+              './src/components/AdminKeysManagement.tsx',
+            ],
+            'views-dashboards': [
+              './src/views/CreatorDashboardView.tsx',
+              './src/views/InvestorDashboardView.tsx',
+              './src/views/ProfessionalDashboardView.tsx',
+            ],
+            'views-exchange': [
+              './src/views/ExchangeView.tsx',
+              './src/views/SwipeView.tsx',
+              './src/views/ContractDetailView.tsx',
+              './src/views/WalletView.tsx',
+              './src/views/HoldingsView.tsx',
+            ],
+            'views-community': [
+              './src/views/SocialFeedView.tsx',
+              './src/views/GovernanceView.tsx',
+              './src/views/LoungeView.tsx',
+            ],
+            'views-legal': [
+              './src/views/LegalView.tsx',
+              './src/views/SettingsView.tsx',
+              './src/views/ProfileView.tsx',
+            ],
+            'views-onboarding': [
+              './src/components/ConceptTutorial.tsx',
+              './src/components/OnboardingWizard.tsx',
+            ],
+            'views-secondary': [
+              './src/views/AcademyView.tsx',
+              './src/views/CompareView.tsx',
+              './src/views/TaxOptimizerView.tsx',
+              './src/views/RegistryView.tsx',
+              './src/views/WatchlistView.tsx',
+              './src/views/SettlementView.tsx',
+              './src/views/PricingView.tsx',
+              './src/views/APIView.tsx',
+              './src/views/AboutView.tsx',
+            ],
+            'views-project': [
+              './src/views/ProjectPublicView.tsx',
+              './src/views/MecenatView.tsx',
+              './src/views/LinkArtView.tsx',
+              './src/views/PaymentView.tsx',
+            ],
+            'views-auth': [
+              './src/views/LoginView.tsx',
+              './src/views/SignupView.tsx',
+              './src/views/ApplyForVerificationView.tsx',
+              './src/views/PendingApprovalView.tsx',
+            ],
+          },
+        },
+      },
+    },
+    server: {
+      hmr: false,
+      port: 3000,
+      host: '0.0.0.0',
+    },
+  };
+});
