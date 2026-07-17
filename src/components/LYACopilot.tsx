@@ -32,14 +32,14 @@ export const LYACopilot: React.FC = () => {
 
   const suggestions = isFR ? [
     { title: 'Qu\'est-ce que le Score LYA ?', query: 'Explique comment le Score LYA est calculé et ce qu\'il représente.' },
-    { title: 'Frais d\'échange P2P', query: 'Quels sont les frais pour acheter et vendre des unités créatives sur le marché secondaire ?' },
+    { title: 'Comment fonctionne la certification ?', query: 'Explique-moi comment fonctionne la certification LYA pour un projet créatif.' },
     { title: 'Comment commencer ?', query: 'Comment puis-je commencer à soutenir des projets créatifs sur LinkYourArt ?' },
-    { title: 'C\'est quoi le LYA Unit ?', query: 'Explique-moi ce qu\'est le LYA Unit et comment il fonctionne comme étalon de valeur créative.' },
+    { title: 'Quels sont les frais de certification ?', query: 'Quels sont les frais pour faire certifier un projet créatif sur LinkYourArt ?' },
   ] : [
     { title: 'What is LYA Score?', query: 'Explain how the LYA Score is calculated and what it represents.' },
-    { title: 'P2P Exchange Fees', query: 'What are the fees for buying and selling creative units on the secondary market?' },
+    { title: 'How does certification work?', query: 'Explain how LYA certification works for a creative project.' },
     { title: 'How to start?', query: 'How can I start supporting creative projects on LinkYourArt?' },
-    { title: 'What is the LYA Unit?', query: 'Explain what the LYA Unit is and how it works as a creative value standard.' },
+    { title: 'What are certification fees?', query: 'What are the fees to get a creative project certified on LinkYourArt?' },
   ];
 
   const scrollToBottom = () => {

@@ -36,7 +36,7 @@ import {Contract, PillarScore} from '../types';
 import { useTranslation } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { simulatePDFDownload } from '../utils/download';
-import { generateAssetAnalysis, askCopilot, generateInvestmentThesis } from '../services/geminiService';
+import { generateAssetAnalysis, askCopilot } from '../services/geminiService';
 import { getSafeImageUrl } from '../utils/image';
 import { 
   AreaChart, 

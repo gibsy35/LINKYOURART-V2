@@ -77,13 +77,13 @@ const INITIAL_NEWS: NewsItem[] = [
   {
     id: '2',
     category: 'MARKET',
-    title: 'Creative Rights Index Reaches All-Time High',
-    summary: 'Global creative projects are outperforming traditional tech stocks as professional associates seek alternative progressions.',
+    title: 'Creative Certification Index Reaches All-Time High',
+    summary: 'Global creative projects are achieving record LYA Score certifications as professional associates seek objective quality standards.',
     timestamp: '45m ago',
     impact: {
       score: 8,
       trend: 'UP',
-      description: 'LYA Unit floor price adjusted to $52.40. Market disponibilité à des niveaux records.'
+      description: 'Average LYA Score across certified projects reaches a new high. Certification demand at record levels.'
     },
     source: 'Bloomberg Creative',
     imageUrl: 'https://picsum.photos/seed/creative/800/500'
@@ -92,12 +92,12 @@ const INITIAL_NEWS: NewsItem[] = [
     id: '6',
     category: 'MARKET',
     title: 'Major Music Catalog Valuation Dispute',
-    summary: 'A high-profile dispute over the valuation of a legendary rock band\'s catalog is causing ripples in the music equity market.',
+    summary: 'A high-profile dispute over the certified valuation of a legendary rock band\'s catalog is raising questions in the music rights industry.',
     timestamp: '10h ago',
     impact: {
       score: -25,
       trend: 'DOWN',
-      description: 'Market uncertainty for legacy music contracts. Liquidity centers reporting wider spreads.'
+      description: 'Valuation uncertainty for legacy music contracts. Certification bodies reporting wider assessment ranges.'
     },
     source: 'Rolling Stone',
     imageUrl: 'https://picsum.photos/seed/music/800/500'
@@ -204,7 +204,7 @@ const INITIAL_NEWS: NewsItem[] = [
     id: '12',
     category: 'MARKET',
     title: 'Independent Studio Revolution in Europe',
-    summary: 'Boutique production houses are leveraging LYA units to bypass traditional financing hurdles in France and Germany.',
+    summary: 'Boutique production houses are leveraging LYA certification to unlock alternative financing routes in France and Germany.',
     timestamp: '5h ago',
     impact: {
       score: 12,
@@ -237,7 +237,7 @@ const INITIAL_NEWS: NewsItem[] = [
     impact: {
       score: 28,
       trend: 'UP',
-      description: 'Standardization of legacy rights will unlock billions in dormant creative equity.'
+      description: 'Standardization of legacy rights will unlock certification opportunities for thousands of dormant creative works.'
     },
     source: 'Hollywood Reporter',
     imageUrl: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80&w=800'
@@ -245,13 +245,13 @@ const INITIAL_NEWS: NewsItem[] = [
   {
     id: '15',
     category: 'MARKET',
-    title: 'Le Monde: French Government Backs Creative Tokenization',
-    summary: 'The Ministry of Culture announces tax incentives for projects using professional creative registries.',
+    title: 'Le Monde: French Government Backs Creative Certification Standards',
+    summary: 'The Ministry of Culture announces tax incentives for projects using professional creative certification registries.',
     timestamp: '2d ago',
     impact: {
       score: 45,
       trend: 'UP',
-      description: 'France becomes the first G7 nation to officially integrate creative equity into national policy.'
+      description: 'France becomes the first G7 nation to officially integrate creative certification standards into national policy.'
     },
     source: 'Le Monde',
     imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=800'
@@ -770,7 +770,7 @@ export const SocialFeedView: React.FC<SocialFeedViewProps> = ({ onNotify }) => {
 
               <div>
                 <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest mb-2">
-                  <span className="text-white">Market Liquidity</span>
+                  <span className="text-white">Certification Throughput</span>
                   <span className="text-emerald-400">72%</span>
                 </div>
                 <div className="h-1 bg-white/5 rounded-full overflow-hidden">

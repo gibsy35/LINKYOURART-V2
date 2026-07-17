@@ -270,65 +270,6 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
     }));
   }, []);
 
-  const caseStudies = React.useMemo(() => {
-    const ren = liveContracts.find(c => c.name === 'RENAISSANCE REBORN');
-    const sky = liveContracts.find(c => c.name === 'SKY GARDENS V4');
-    const bio = liveContracts.find(c => c.name === 'CHRONICLES OF ELDON');
-
-    return [
-      {
-        idx: 0,
-        title: t('INSTITUTIONAL LIQUIDITY', 'LIQUIDITÉ INSTITUTIONNELLE'),
-        subtitle: t('RENAISSANCE REBORN', 'RENAISSANCE REBORN'),
-        description: t('Standard physical art masterwork fractioned into 10,000 LYA Unit indexes. The unit price acts as a direct thermometer of active curatorial appreciation.', 'Chef-d\'œuvre physique d\'art classique fractionné en 10 000 unités LYA. Le cours unitaire est le thermomètre direct de l\'appréciation des conservateurs.'),
-        icon: <ShieldCheck className="text-primary-cyan" size={32} />,
-        metric: ren ? `${ren.growth >= 0 ? '+' : ''}${ren.growth.toFixed(2)}%` : '+14.2%',
-        metricLabel: t('YTD GROWTH', 'HAUSSE DE L\'INDEX LYA'),
-        baselineProjectVal: 500000,
-        currentProjectVal: ren ? ren.totalValue : 571000,
-        baselineUnitVal: 50.00,
-        currentUnitVal: ren ? ren.unitValue : 57.10,
-        jalonPlus: t('Exhibition at Paris Grand Palais validated', 'Validation Exhibition Grand Palais Paris'),
-        jalonPlusImpact: '+14.2%',
-        jalonMinus: t('Delay in insurance appraisal validation', 'Retard certificat d\'expertise d\'assurance'),
-        jalonMinusImpact: '-7.5%'
-      },
-      {
-        idx: 1,
-        title: t('REVENUE SHARE DYNAMICS', 'DYNAMIQUE REVENUE SHARE'),
-        subtitle: t('SKY GARDENS V4', 'SKY GARDENS V4'),
-        description: t('Architectural blueprint royalties distributed as dynamic flux de performance indexes. Price adapts instantly to validated commercial license signings.', 'Redevances de plans d\'architectes distribuées en flux de performance. L\'indice s\'adapte en temps réel aux signatures de licences.'),
-        icon: <Activity className="text-accent-gold" size={32} />,
-        metric: sky ? `${sky.growth >= 0 ? '+' : ''}${sky.growth.toFixed(2)}%` : '+8.4%',
-        metricLabel: t('INDEX PERF', 'PERF DE L\'INDEX LYA'),
-        baselineProjectVal: 2500000,
-        currentProjectVal: sky ? sky.totalValue : 2710000,
-        baselineUnitVal: 50.00,
-        currentUnitVal: sky ? sky.unitValue : 54.20,
-        jalonPlus: t('Hotel operator licensing contract signed', 'Contrat licence hôtelière internationale signé'),
-        jalonPlusImpact: '+8.4%',
-        jalonMinus: t('Balcony eco-renovation permit postponed', 'Permis éco-rénovation balcon ajourné'),
-        jalonMinusImpact: '-11.0%'
-      },
-      {
-        idx: 2,
-        title: t('TV SERIES MASTER IP', 'SCÉNARIO & DROITS DE SÉRIE TV'),
-        subtitle: t('CHRONICLES OF ELDON', 'CHRONICLES OF ELDON'),
-        description: t('Global broadcasting rights and revenue share metrics for the international sci-fi premium series. Multi-territory SVOD presales, broadcasting signatures, and streaming collection milestones govern direct transfer platform index appreciation.', 'Indexation d\'un projet de série TV internationale. Les signatures de droits de diffusion SVOD et accords de syndication TV mondiaux pilotent la valorisation du cours unitaire.'),
-        icon: <Clapperboard className="text-accent-pink" size={32} />,
-        metric: bio ? `${bio.growth >= 0 ? '+' : ''}${bio.growth.toFixed(2)}%` : '+32.5%',
-        metricLabel: t('MARKET MOVEMENT', 'CONTRAT LYA INITIAL'),
-        baselineProjectVal: 1200000,
-        currentProjectVal: bio ? bio.totalValue : 1590000,
-        baselineUnitVal: 50.00,
-        currentUnitVal: bio ? bio.unitValue : 66.25,
-        jalonPlus: t('SVOD Season 1 Premiere & Pre-Sales', 'Validation d\'accords majeurs de diffusion SVOD multi-pays'),
-        jalonPlusImpact: '+32.5%',
-        jalonMinus: t('Post-production VFX rendering delay', 'Retard de livraison des effets spéciaux de post-production'),
-        jalonMinusImpact: '-15.8%'
-      }
-    ];
-  }, [liveContracts, t]);
 
 
   // Jalons data for each case study
@@ -440,10 +381,8 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {CASE_META.map((meta, idx) => {
             const isActive = selectedCaseIdx === idx;
-            // Read from the single source of truth — guaranteed to match the right panel
-            const price = allCasePrices[idx].finalPrice;
-            const ret   = allCasePrices[idx].totalReturn;
-            const isPositive = ret >= 0;
+            const scoreGain = meta.finalScore - meta.initialScore;
+            const isPositive = scoreGain >= 0;
             return (
               <motion.button
                 key={idx}
@@ -466,15 +405,15 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <p className="text-[10px] text-white/30 uppercase font-black tracking-widest mb-0.5">{t('Final price / unit', 'Prix final / unité')}</p>
+                    <p className="text-[10px] text-white/30 uppercase font-black tracking-widest mb-0.5">{t('Final LYA Score', 'Score LYA Final')}</p>
                     <p className={`text-xl font-black font-mono ${isActive ? 'text-primary-cyan' : 'text-white'}`}>
-                      ${price.toFixed(2)}
+                      {meta.finalScore}<span className="text-[10px] text-white/30">/1000</span>
                     </p>
                   </div>
                   <div className={`px-3 py-1 text-xs font-black font-mono ${
                     isPositive ? 'bg-emerald-400/10 text-emerald-400' : 'bg-rose-400/10 text-rose-400'
                   }`}>
-                    {isPositive ? '+' : ''}{ret}%
+                    {isPositive ? '+' : ''}{scoreGain} pts
                   </div>
                 </div>
                 {isActive && (
@@ -505,7 +444,6 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                 <div className="text-right">
                   <p className="text-[10px] font-black uppercase tracking-widest text-white/30">{t('Budget', 'Budget')}</p>
                   <p className="text-sm font-black text-white font-mono">{activeMeta.budget}</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-white/30 mt-1">{activeMeta.units} {t('units', 'unités')}</p>
                 </div>
               </div>
 
@@ -521,11 +459,6 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                   <div>
                     <p className="text-[10px] text-white/30 uppercase font-black">{t('Score', 'Score')}</p>
                     <p className="text-sm font-black text-white font-mono">{activeMeta.initialScore}<span className="text-white/20 text-xs">/1000</span></p>
-                  </div>
-                  <div className="w-px h-8 bg-white/10" />
-                  <div>
-                    <p className="text-[10px] text-white/30 uppercase font-black">{t('Unit price', 'Prix/unité')}</p>
-                    <p className="text-sm font-black text-white font-mono">$50.00</p>
                   </div>
                 </div>
               </div>
@@ -572,21 +505,13 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                       <p className="text-[11px] text-white/45 leading-relaxed">{j.desc}</p>
                     </div>
 
-                    {/* Score + Price impact */}
+                    {/* Score impact */}
                     <div className="flex items-center gap-3 shrink-0 text-right flex-wrap">
                       <div>
                         <p className="text-[10px] text-white/30 uppercase font-black tracking-widest">{t('Score', 'Score')}</p>
                         <p className="text-xs font-black text-white font-mono">{p.prevScore} → <span className={isJalon ? 'text-emerald-400' : 'text-rose-400'}>{p.newScore}</span></p>
                         <p className={`text-xs font-black font-mono ${isJalon ? 'text-emerald-400' : 'text-rose-400'}`}>
                           {j.scoreDelta > 0 ? '+' : ''}{j.scoreDelta}
-                        </p>
-                      </div>
-                      <div className="w-px h-10 bg-white/10" />
-                      <div className="min-w-[72px]">
-                        <p className="text-[10px] text-white/30 uppercase font-black tracking-widest">{t('Price', 'Prix')}</p>
-                        <p className="text-xs font-black text-white font-mono">${p.newPrice.toFixed(2)}</p>
-                        <p className={`text-xs font-black font-mono ${p.pct >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                          {p.pct >= 0 ? '+' : ''}{p.pct}%
                         </p>
                       </div>
                     </div>
@@ -604,17 +529,13 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                 <p className="text-xs font-black uppercase tracking-[0.4em] text-primary-cyan/60 mb-4">{t('Final result', 'Résultat final')}</p>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-3 border-b border-white/5">
-                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{t('Initial price', 'Prix initial')}</span>
-                    <span className="text-sm font-black text-white font-mono">$50.00</span>
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{t('Initial LYA Score', 'Score LYA Initial')}</span>
+                    <span className="text-sm font-black text-white font-mono">{activeMeta.initialScore}<span className="text-[10px] text-white/20">/1000</span></span>
                   </div>
                   <div className="flex justify-between items-center py-3 border-b border-white/5">
-                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{t('Final price', 'Prix final')}</span>
-                    <span className="text-xl font-black text-primary-cyan font-mono">${finalPrice.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-white/5">
-                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{t('Total return', 'Rendement total')}</span>
-                    <span className={`text-xl font-black font-mono ${totalReturn >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                      {totalReturn >= 0 ? '+' : ''}{totalReturn}%
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{t('Score progression', 'Progression du Score')}</span>
+                    <span className={`text-xl font-black font-mono ${activeMeta.finalScore >= activeMeta.initialScore ? 'text-emerald-400' : 'text-rose-400'}`}>
+                      {activeMeta.finalScore >= activeMeta.initialScore ? '+' : ''}{activeMeta.finalScore - activeMeta.initialScore} pts
                     </span>
                   </div>
                   <div className="flex justify-between items-center py-3">
@@ -625,22 +546,22 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                 <div className="mt-6 pt-4 border-t border-white/10">
                   <p className="text-xs text-white/30 font-bold uppercase tracking-widest leading-relaxed">
                     {t(
-                      'An investor who bought at $50 now holds units worth $' + finalPrice.toFixed(2) + ' on the secondary market.',
-                      'Un investisseur qui a souscrit à $50 détient des unités valant $' + finalPrice.toFixed(2) + ' sur le marché secondaire.'
+                      'Each validated milestone raises the project\'s certified LYA Score, reflecting stronger objective quality and traction.',
+                      'Chaque jalon validé fait progresser le Score LYA certifié du projet, reflétant une qualité et une traction objectives renforcées.'
                     )}
                   </p>
                 </div>
               </div>
 
-              {/* Price chart mini */}
+              {/* Score chart mini */}
               <div className="border border-white/10 bg-white/[0.02] p-6">
-                <p className="text-xs font-black uppercase tracking-[0.4em] text-white/30 mb-4">{t('Price evolution', 'Évolution du prix')}</p>
+                <p className="text-xs font-black uppercase tracking-[0.4em] text-white/30 mb-4">{t('Score evolution', 'Évolution du Score')}</p>
                 <div style={{ width: '100%', height: 140 }}>
                   <ResponsiveContainer width="100%" height={140}>
                     <AreaChart
-                      data={[{ step: 'Départ', price: 50 }, ...activeJalons.map((j, i) => ({
+                      data={[{ step: 'Départ', score: activeMeta.initialScore }, ...activeJalons.map((j, i) => ({
                         step: j.title.split(' ').slice(0, 2).join(' '),
-                        price: jalonPrices[i]?.newPrice ?? 50
+                        score: jalonPrices[i]?.newScore ?? activeMeta.initialScore
                       }))]}
                       margin={{ top: 5, right: 5, left: 0, bottom: 0 }}
                     >
@@ -651,15 +572,15 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="2 2" stroke="#ffffff06" vertical={false} />
-                      <YAxis hide domain={['dataMin - 2', 'dataMax + 2']} />
+                      <YAxis hide domain={[0, 1000]} />
                       <XAxis dataKey="step" hide />
                       <Tooltip
                         contentStyle={{ background: '#0D1117', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '8px 12px' }}
                         itemStyle={{ color: activeColor, fontSize: 11, fontWeight: 800 }}
                         labelStyle={{ color: 'rgba(255,255,255,0.3)', fontSize: 9, textTransform: 'uppercase' }}
-                        formatter={(v: number) => [`$${v.toFixed(2)}`, 'Prix']}
+                        formatter={(v: number) => [`${v}/1000`, 'Score']}
                       />
-                      <Area type="monotone" dataKey="price" stroke={activeColor} strokeWidth={2} fill="url(#priceGradCS)" dot={{ fill: activeColor, r: 3, strokeWidth: 0 }} activeDot={{ r: 5, strokeWidth: 0 }} />
+                      <Area type="monotone" dataKey="score" stroke={activeColor} strokeWidth={2} fill="url(#priceGradCS)" dot={{ fill: activeColor, r: 3, strokeWidth: 0 }} activeDot={{ r: 5, strokeWidth: 0 }} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -673,8 +594,8 @@ const RealTimeValuation: React.FC<{ liveContracts: Contract[] }> = ({ liveContra
                 </div>
                 <p className="text-[11px] text-white/50 leading-relaxed font-medium">
                   {t(
-                    'Each point gained on the LYA Score adds +$0.10 to the unit price on the secondary market. Each point lost removes -$0.10. A project reaching 1000/1000 doubles its unit value.',
-                    'Chaque point gagné au Score LYA ajoute +$0.10 au prix unitaire sur le marché secondaire. Chaque point perdu retire -$0.10. Un projet atteignant 1000/1000 double la valeur de ses unités.'
+                    'Every validated milestone raises the project\'s certified LYA Score. Every missed or delayed milestone lowers it. A project\'s score reflects its real, verified progress — not a market price.',
+                    'Chaque jalon validé fait progresser le Score LYA certifié du projet. Chaque jalon manqué ou retardé le fait reculer. Le score d\'un projet reflète sa progression réelle et vérifiée — pas un prix de marché.'
                   )}
                 </p>
               </div>
@@ -1432,7 +1353,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ user, onViewChange, liveCont
             </div>
             <h3 className="text-xl font-black font-headline uppercase tracking-widest mb-4">{language === 'FR' ? 'PARTENAIRES CRÉATIFS' : 'CREATIVE PARTNERS'}</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed opacity-70 text-justify">
-              {language === 'FR' ? 'Soutenez la prochaine génération de projets créatifs. Les Partenaires Créatifs acquièrent des Unités LYA représentant des droits contractuels futurs, participant au succès de projets vérifiés via une cession directe sécurisée.' : 'Support the next generation of creative projects. Creative Partners acquire LYA Units representing future contractual rights, participating in the success of verified creative projects through a secure direct transfer.'}
+              {language === 'FR' ? 'Soutenez la prochaine génération de projets créatifs. Les Partenaires Créatifs participent directement à des projets certifiés, selon des droits contractuels définis dans chaque contrat, via une démarche sécurisée et transparente.' : 'Support the next generation of creative projects. Creative Partners participate directly in certified projects, under contractual terms defined in each certified contract, through a secure and transparent process.'}
             </p>
           </div>
 

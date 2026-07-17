@@ -2587,61 +2587,6 @@ const renderMentorshipContent = () => (
                   </div>
                 </section>
 
-                {/* Yield Optimization & Staking - Premium Interactive */}
-                <section className="bg-surface-low/30 border border-emerald-400/10 p-5 md:p-8 lg:p-12 backdrop-blur-2xl relative overflow-hidden group shadow-2xl rounded-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/[0.02] to-transparent pointer-events-none" />
-                  <div className="absolute top-0 right-0 p-6 md:p-12 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-700">
-                    <Zap size={100} className="text-emerald-400" />
-                  </div>
-                  <div className="flex justify-between items-center mb-6 md:mb-10 lg:mb-12 relative z-10">
-                    <div>
-                      <h3 className="text-xl md:text-2xl lg:text-3xl font-black uppercase italic tracking-tight flex items-center gap-3 md:gap-4 mb-2">
-                        <Zap className="text-emerald-400" size={28} /> {t('Yield Optimization', 'Optimisation du Rendement')}
-                      </h3>
-                      <p className="text-xs md:text-xs text-on-surface-variant uppercase tracking-widest font-bold opacity-40">{t('Protocoles avancés de valorisation et de droits', 'Protocoles avancés de valorisation et de droits')}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 relative z-10">
-                    <div className="p-5 md:p-8 lg:p-10 bg-emerald-400/5 border border-emerald-400/10 group/card hover:border-emerald-400/30 transition-all duration-500">
-                      <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-                        <div className="w-8 h-8 md:w-12 md:h-12 bg-emerald-400/10 flex items-center justify-center border border-emerald-400/20">
-                          <Activity size={20} className="text-emerald-400" />
-                        </div>
-                        <span className="text-xs md:text-[11px] font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-emerald-400">{t('Dynamic LYA Score', 'Score LYA Dynamique')}</span>
-                      </div>
-                      <p className="text-[10px] md:text-sm text-on-surface-variant italic mb-6 md:mb-10 leading-relaxed opacity-70">
-                        {t('Real-time data indexing for predictive equity valuation based on market velocity and institutional demand.', 'Indexation des données en temps réel pour une valorisation prédictive de l\'equity basée sur la vélocité du marché et la demande institutionnelle.')}
-                      </p>
-                      <div className="flex items-baseline gap-3 md:gap-4">
-                        <span className="text-2xl md:text-4xl font-black italic tracking-tight text-white">842.5</span>
-                        <div className="flex items-center gap-1.5 px-2 md:px-3 py-0.5 md:py-1 bg-emerald-400/10 border border-emerald-400/20">
-                          <TrendingUp size={10} className="text-emerald-400" />
-                          <span className="text-[10px] md:text-[10px] text-emerald-400 font-black uppercase tracking-widest">+2.4% LIVE</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-5 md:p-8 lg:p-10 bg-primary-cyan/5 border border-primary-cyan/10 group/card hover:border-primary-cyan/30 transition-all duration-500">
-                      <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-                        <div className="w-8 h-8 md:w-12 md:h-12 bg-primary-cyan/10 flex items-center justify-center border border-primary-cyan/20">
-                          <Layers size={20} className="text-primary-cyan" />
-                        </div>
-                        <span className="text-xs md:text-[11px] font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-primary-cyan">{t('Staking Protocol', 'Protocole de Staking')}</span>
-                      </div>
-                      <p className="text-[10px] md:text-sm text-on-surface-variant italic mb-6 md:mb-10 leading-relaxed opacity-70">
-                        {t('Stake LYA Units to stabilize creative volatility, secure registry verification, and earn institutional-grade rewards.', 'Staker des Unités LYA pour stabiliser la volatilité créative, sécuriser la vérification du registre et gagner des récompenses de qualité institutionnelle.')}
-                      </p>
-                      <button 
-                        onClick={() => handlePremiumFeature('Staking Management')}
-                        className="w-full py-3.5 md:py-5 bg-primary-cyan/10 border border-primary-cyan/30 text-primary-cyan text-xs md:text-[11px] font-black uppercase tracking-[0.15em] md:tracking-[0.3em] hover:bg-primary-cyan hover:text-surface-dim transition-all active:scale-95 shadow-[0_10px_30px_rgba(0,224,255,0.1)]"
-                      >
-                        {t('Manage Staking', 'Gérer le Staking')}
-                      </button>
-                    </div>
-                  </div>
-                </section>
-
 
               </div>
 

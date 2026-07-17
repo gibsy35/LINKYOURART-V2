@@ -54,8 +54,8 @@ export const LYAProtocolBadge: React.FC = () => {
           messages: [{
             role: 'user',
             content: t(
-              'Generate an SVG visual representing the LinkYourArt creative ecosystem: a network of artists, patrons and professionals connected by LYA Units. Modern, dark background (#0d1117), cyan (#00d4ff) and violet (#a78bfa) accents. Return only the SVG code.',
-              'Génère un visuel SVG représentant l\'écosystème créatif LinkYourArt : un réseau d\'artistes, mécènes et professionnels connectés par des LYA Units. Design moderne, fond sombre (#0d1117), accents cyan (#00d4ff) et violet (#a78bfa). Retourne uniquement le code SVG.'
+              'Generate an SVG visual representing the LinkYourArt creative ecosystem: a network of artists, patrons and professionals connected through the LYA certification standard. Modern, dark background (#0d1117), cyan (#00d4ff) and violet (#a78bfa) accents. Return only the SVG code.',
+              'Génère un visuel SVG représentant l\'écosystème créatif LinkYourArt : un réseau d\'artistes, mécènes et professionnels connectés par le standard de certification LYA. Design moderne, fond sombre (#0d1117), accents cyan (#00d4ff) et violet (#a78bfa). Retourne uniquement le code SVG.'
             )
           }]
         })
