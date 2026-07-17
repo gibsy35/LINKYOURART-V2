@@ -66,7 +66,6 @@ const data = [
 
 import { useMarketData } from '../hooks/useMarketData';
 import { LYAAlgorithm } from '../components/LYAAlgorithm';
-import { SecondaryMarket } from '../components/SecondaryMarket';
 import { AdminKeysManagement } from '../components/AdminKeysManagement';
 import { WorkspaceWidgets } from '../components/WorkspaceWidgets';
 import { fetchRealtimeNews } from '../services/geminiService';
@@ -85,7 +84,7 @@ export const DashboardView: React.FC<{
   const { formatPrice, formatLYA } = useCurrency();
   const { contracts: hookContracts, marketStats, lastUpdate } = useMarketData();
   const contracts = liveContracts || hookContracts;
-  const [activeTab, setActiveTab] = React.useState<'overview' | 'predictive' | 'accessibilité' | 'workspace' | 'management'>('overview');
+  const [activeTab, setActiveTab] = React.useState<'overview' | 'predictive' | 'workspace' | 'management'>('overview');
   
   const isAdmin = user?.email?.toLowerCase() === 'linkyourart@gmail.com' || user?.role === 'ADMIN';
 
@@ -339,18 +338,6 @@ export const DashboardView: React.FC<{
               )}
               <div className="absolute inset-0 bg-primary-cyan/0 group-hover:bg-primary-cyan/5 transition-all duration-300 -mb-0.5" />
             </button>
-            <button 
-              onClick={() => setActiveTab('accessibilité')}
-              className={`pb-4 text-xs font-black uppercase tracking-wider transition-all relative group flex items-center gap-3 shrink-0 ${activeTab === 'accessibilité' ? 'text-primary-cyan' : 'text-on-surface-variant hover:text-on-surface'}`}
-            >
-              <ActivityIcon size={14} className={activeTab === 'accessibilité' ? 'text-primary-cyan' : 'text-on-surface-variant opacity-40'} />
-              <span className="relative z-10">{t('Exchange Center', 'Centre d\'Échanges')}</span>
-              {activeTab === 'accessibilité' && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-cyan shadow-[0_0_10px_rgba(0,224,255,0.5)] transition-all duration-300" />
-              )}
-              <div className="absolute inset-0 bg-primary-cyan/0 group-hover:bg-primary-cyan/5 transition-all duration-300 -mb-0.5" />
-            </button>
-
             <button
               onClick={() => setActiveTab('workspace')}
               className={`pb-4 text-xs font-black uppercase tracking-wider transition-all relative group flex items-center gap-3 shrink-0 ${activeTab === 'workspace' ? 'text-primary-cyan' : 'text-on-surface-variant hover:text-on-surface'}`}
@@ -763,10 +750,10 @@ export const DashboardView: React.FC<{
                   {t('Load More', 'Voir Plus')} <RefreshCw size={14} />
                 </button>
                 <button 
-                  onClick={() => onViewChange?.('SETTLEMENT')}
+                  onClick={() => onViewChange?.('REGISTRY')}
                   className="flex-1 py-3 bg-primary-cyan/10 border border-primary-cyan/20 text-[10px] font-black uppercase tracking-widest text-primary-cyan hover:bg-primary-cyan hover:text-surface-dim transition-all flex items-center justify-center gap-2 rounded-sm"
                 >
-                  {t('View Full Activity', 'Voir Toute l\'Activité')} <ChevronRight size={14} />
+                  {t('View Full Registry', 'Voir le Registre Complet')} <ChevronRight size={14} />
                 </button>
               </div>
             </div>
@@ -845,9 +832,7 @@ export const DashboardView: React.FC<{
         <WorkspaceWidgets />
       ) : activeTab === 'management' ? (
         <AdminKeysManagement />
-      ) : (
-        <SecondaryMarket />
-      )}
+      ) : null}
 
       {/* Creative Feed, Network Activity & Trending Sectors */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">

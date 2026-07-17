@@ -42,10 +42,10 @@ export const WalletView: React.FC<WalletViewProps> = ({ user, onNotify, onViewCh
 
   const transactions = [
     { id: '1', type: 'DEPOSIT', amount: 2500, status: 'COMPLETED', date: '2026-05-15 14:22', method: 'SEPA Transfer' },
-    { id: '2', type: 'PURCHASE', amount: -450, status: 'COMPLETED', date: '2026-05-14 09:15', method: 'Contract Acquisition' },
-    { id: '3', type: 'REWARD', amount: 15.5, status: 'COMPLETED', date: '2026-05-13 23:59', method: 'Daily APY Distribution' },
+    { id: '2', type: 'CERTIFICATION_FEE', amount: -450, status: 'COMPLETED', date: '2026-05-14 09:15', method: 'LYA Certification' },
+    { id: '3', type: 'SUBSCRIPTION', amount: -49, status: 'COMPLETED', date: '2026-05-13 23:59', method: 'LYA Pro Monthly' },
     { id: '4', type: 'WITHDRAW', amount: -1000, status: 'PENDING', date: '2026-05-12 18:30', method: 'Bank Withdrawal' },
-    { id: '5', type: 'SALE', amount: 320, status: 'COMPLETED', date: '2026-05-11 11:45', method: 'Contract Liquidation' },
+    { id: '5', type: 'CERTIFICATION_FEE', amount: -320, status: 'COMPLETED', date: '2026-05-11 11:45', method: 'Due Diligence' },
   ];
 
   const handleCopyIban = () => {
@@ -111,12 +111,12 @@ export const WalletView: React.FC<WalletViewProps> = ({ user, onNotify, onViewCh
               </div>
               <div className="space-y-2 text-left md:text-right">
                 <h3 className="text-[10px] font-black text-accent-gold uppercase tracking-[0.4em] flex items-center gap-1.5 md:justify-end mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse inline-block" /> {t('LYA UNIT', 'UNITÉ LYA')}
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse inline-block" /> {t('LYA SCORE', 'SCORE LYA')}
                 </h3>
                 <div className="space-y-1">
-                  <p className="text-[10px] font-black text-on-surface-variant/40 uppercase tracking-widest leading-none">{t('AVAILABLE LYA UNITS', 'UNITÉS LYA DISPONIBLES')}</p>
+                  <p className="text-[10px] font-black text-on-surface-variant/40 uppercase tracking-widest leading-none">{t('CERTIFIED PROJECTS', 'PROJETS CERTIFIÉS')}</p>
                   <p className="text-4xl md:text-5xl font-black font-headline tracking-tighter text-accent-gold">
-                    {Number(lyaUnits).toLocaleString(t('en-US', 'fr-FR'))} <span className="text-xs md:text-sm font-black uppercase text-on-surface-variant/60 tracking-wider">Units</span>
+                    {Number(lyaUnits).toLocaleString(t('en-US', 'fr-FR'))} <span className="text-xs md:text-sm font-black uppercase text-on-surface-variant/60 tracking-wider">{t('Active', 'Actifs')}</span>
                   </p>
                 </div>
               </div>
