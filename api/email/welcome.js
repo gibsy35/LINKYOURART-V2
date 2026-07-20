@@ -76,8 +76,8 @@ function buildWelcomeEmail(name, role, lang) {
       ? 'Votre espace créateur est prêt. Soumettez votre premier projet et obtenez votre LYA Score.'
       : 'Your creator space is ready. Submit your first project and get your LYA Score.',
     INVESTOR: isFR
-      ? 'Votre espace mécène est prêt. Découvrez les projets créatifs disponibles sur l\'Exchange LYA.'
-      : 'Your patron space is ready. Discover creative projects available on the LYA Exchange.',
+      ? 'Votre espace mécène est prêt. Découvrez les projets créatifs certifiés sur le Registre LYA.'
+      : 'Your patron space is ready. Discover certified creative projects on the LYA Registry.',
     PROFESSIONAL: isFR
       ? 'Votre espace professionnel est prêt. Accédez au hub de validation et au Lounge Pro.'
       : 'Your professional space is ready. Access the validation hub and Pro Lounge.',
@@ -85,11 +85,11 @@ function buildWelcomeEmail(name, role, lang) {
 
   const nextSteps = isFR ? [
     { step: '01', text: 'Complétez votre profil LYA' },
-    { step: '02', text: 'Explorez les projets créatifs sur l\'Exchange' },
+    { step: '02', text: 'Explorez les projets créatifs certifiés sur le Registre' },
     { step: '03', text: 'Rejoignez la Communauté LYA' },
   ] : [
     { step: '01', text: 'Complete your LYA profile' },
-    { step: '02', text: 'Explore creative projects on the Exchange' },
+    { step: '02', text: 'Explore certified creative projects on the Registry' },
     { step: '03', text: 'Join the LYA Community' },
   ];
 

@@ -731,7 +731,7 @@ export const ContractDetailView: React.FC<ContractDetailViewProps> = ({
                                 </div>
                                 <h4 className="text-2xl font-headline font-black text-white uppercase tracking-tighter leading-none">{m.label}</h4>
                              </div>
-                             <div className="px-4 py-2 bg-black/40 rounded-xl border border-white/5 text-primary-cyan text-[10px] font-black">+{m.priceImpact}% TARGET</div>
+                             <div className="px-4 py-2 bg-black/40 rounded-xl border border-white/5 text-primary-cyan text-[10px] font-black">+{m.scoreImpact}% SCORE</div>
                           </div>
                        </div>
                     ))}

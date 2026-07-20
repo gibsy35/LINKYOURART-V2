@@ -235,9 +235,9 @@ export const ProjectPublicView: React.FC<Props> = ({ contractId, onViewChange, o
                         <p className="text-sm font-black text-on-surface">{m.label}</p>
                         <p className="text-xs text-on-surface-variant/40 mt-0.5">{m.date}</p>
                       </div>
-                      {m.priceImpact && (
-                        <span className={`text-sm font-black shrink-0 ${m.priceImpact > 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                          {m.priceImpact > 0 ? '+' : ''}{m.priceImpact}% Score
+                      {m.scoreImpact && (
+                        <span className={`text-sm font-black shrink-0 ${m.scoreImpact > 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                          {m.scoreImpact > 0 ? '+' : ''}{m.scoreImpact}% Score
                         </span>
                       )}
                     </div>

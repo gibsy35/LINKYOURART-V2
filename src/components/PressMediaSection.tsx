@@ -15,8 +15,8 @@ const CONTRIBUTIONS = [
     code: 'LYA-PRESS-001',
     icon: <FileText size={16}/>,
     type_fr: 'Article de fond', type_en: 'In-depth article',
-    subject_fr: "Impact de la co-propriété artistique sur l'économie créative européenne",
-    subject_en: 'Impact of artistic co-ownership on the European creative economy',
+    subject_fr: "Impact de la certification créative sur l'économie créative européenne",
+    subject_en: 'Impact of creative certification on the European creative economy',
     brief_fr: "Nous recherchons un angle éditorial sur la transformation du financement culturel. Liberté éditoriale totale, données LYA fournies en exclusivité.",
     brief_en: "We're looking for an editorial angle on the transformation of cultural funding. Full editorial freedom, exclusive LYA data provided.",
     sector: 'Film / TV Series / Global',
@@ -69,8 +69,8 @@ const CONTRIBUTIONS = [
     icon: <PenTool size={16}/>,
     type_fr: 'Tribune / Opinion',
     type_en: 'Tribune / Opinion piece',
-    subject_fr: "L'art comme actif vivant — vers une nouvelle économie créative mondiale",
-    subject_en: "Art as a living asset — toward a new global creative economy",
+    subject_fr: "L'art comme standard reconnu — vers une nouvelle économie créative mondiale",
+    subject_en: "Art as a recognised standard — toward a new global creative economy",
     brief_fr: "Tribune d'opinion signée sous pseudonyme LYA. Angle économique, culturel ou sociétal. 800 à 1500 mots. Publication sur LYA + partenaires médias.",
     brief_en: "Opinion piece signed under LYA pseudonym. Economic, cultural or societal angle. 800 to 1500 words. Published on LYA + media partners.",
     sector: 'Global',
@@ -85,9 +85,9 @@ const CONTRIBUTIONS = [
 ];
 
 const PUBLICATIONS = [
-  { code: 'LYA-PUB-2026-01', title_fr: "LinkYourArt : quand l'art devient un actif partagé", title_en: "LinkYourArt: when art becomes a shared asset", source: 'Média Créatif Indépendant', sector: 'Global', impact: '+8', reads: '12.4K', up: true },
-  { code: 'LYA-PUB-2026-02', title_fr: "La mode comme actif vivant — le cas LinkYourArt", title_en: "Fashion as a living asset — the LinkYourArt case", source: 'Tribune Fashion & Business', sector: 'Fashion', impact: '+12', reads: '8.7K', up: true },
-  { code: 'LYA-PUB-2026-03', title_fr: "Séries TV et co-propriété : une révolution silencieuse", title_en: "TV series and co-ownership: a silent revolution", source: 'Revue Audiovisuelle', sector: 'TV Series', impact: '+6', reads: '5.2K', up: true },
+  { code: 'LYA-PUB-2026-01', title_fr: "LinkYourArt : quand l'art devient un standard certifié", title_en: "LinkYourArt: when art becomes a certified standard", source: 'Média Créatif Indépendant', sector: 'Global', impact: '+8', reads: '12.4K', up: true },
+  { code: 'LYA-PUB-2026-02', title_fr: "La mode et la certification créative — le cas LinkYourArt", title_en: "Fashion and creative certification — the LinkYourArt case", source: 'Tribune Fashion & Business', sector: 'Fashion', impact: '+12', reads: '8.7K', up: true },
+  { code: 'LYA-PUB-2026-03', title_fr: "Séries TV et certification créative : une révolution silencieuse", title_en: "TV series and creative certification: a silent revolution", source: 'Revue Audiovisuelle', sector: 'TV Series', impact: '+6', reads: '5.2K', up: true },
   { code: 'LYA-PUB-2026-04', title_fr: "Musique indépendante et financement alternatif : les nouvelles règles du jeu", title_en: "Independent music and alternative funding: new rules of the game", source: 'Press Music Pro', sector: 'Music', impact: '+15', reads: '21.1K', up: true },
 ];
 
